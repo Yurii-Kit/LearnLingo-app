@@ -1,0 +1,51 @@
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 390px;
+
+    width: 661px;
+    height: 28px;
+}
+
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 8px;
+    width: 133px;
+    height: 28px;
+}
+
+.logoText {
+    font-weight: 500;
+    font-size: 20px;
+
+    /* line-height: 24px; */
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #121417;
+}
+
+.navLinks {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 28px;
+
+    width: 138px;
+    height: 20px;
+}
+
+.link {
+    font-weight: 400;
+    font-size: 16px;
+
+    /* line-height: 20px; */
+    line-height: 1.25;
+    color: #121417;
+}
