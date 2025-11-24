@@ -1,0 +1,150 @@
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+
+.leftBox {
+    border-radius: 30px;
+    width: 720px;
+
+    background: #f8f8f8;
+    padding: 98px 64px;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 48px;
+
+    /* line-height: 56px; */
+    line-height: 1.16667;
+    letter-spacing: -0.02em;
+    color: #121417;
+    margin-bottom: 32px;
+}
+
+.text {
+    position: relative;
+    display: inline-block;
+    font-style: italic;
+    font-weight: 400;
+    z-index: 1;
+}
+
+.text::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    /* верхній відступ від літер */
+    bottom: 8%;
+    /* нижній відступ від літер */
+    left: 0;
+    right: 0;
+    background: #FBE9BA;
+    /* фон */
+    z-index: -1;
+    /* під текстом */
+    border-radius: 8px;
+    /* можна округлити кути */
+}
+
+.description {
+    font-weight: 400;
+    font-size: 16px;
+    /* line-height: 22px; */
+    line-height: 1.375;
+    letter-spacing: -0.02em;
+    color: #121417;
+    margin-bottom: 64px;
+}
+
+.ctaButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+
+    border-radius: 12px;
+    padding: 16px 88px;
+
+    width: 267px;
+    height: 60px;
+    background-color: #f4c550;
+
+    font-weight: 700;
+    font-size: 18px;
+    /* line-height: 28px; */
+    line-height: 1.55556;
+    color: #121417;
+
+
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+    background-color: #ffdc86;
+    ;
+}
+
+.rightBox {
+    position: relative;
+    border-radius: 30px;
+    padding: 80px 115px 111px 115px;
+    width: 568px;
+    background: #fbe9ba;
+}
+
+.laptopImage {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.stats {
+    border: 1.50px dashed #f4c550;
+    border-radius: 30px;
+    padding: 39px 122px;
+
+}
+
+.statList {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 100px;
+}
+
+.statItem {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.statNumber {
+    font-weight: 500;
+    font-size: 28px;
+
+    /* line-height: 32px; */
+    line-height: 1.14286;
+    letter-spacing: -0.02em;
+    color: #121417;
+}
+
+.statLabel {
+    font-weight: 400;
+    font-size: 14px;
+
+    /* line-height: 18px; */
+    line-height: 1.28571;
+    letter-spacing: -0.02em;
+    color: rgba(18, 20, 23, 0.7);
+}
