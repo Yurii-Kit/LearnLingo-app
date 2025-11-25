@@ -4,7 +4,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import ModalWindow from "../ModalWindow/ModalWindow";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
 import css from "./ModalLogin.module.css";
+
+import { useAuthStore } from "../../lib/store/authStore";
+import { toast } from "react-hot-toast/headless";
 
 interface ModalLoginProps {
   onClose: () => void;
@@ -28,6 +33,9 @@ const loginSchema = Yup.object().shape({
 
 export default function ModalLogin({ onClose }: ModalLoginProps) {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const setUser = useAuthStore((state) => state.setUser);
 
   // 3. Ініціалізація хука форми
   const {
@@ -41,10 +49,32 @@ export default function ModalLogin({ onClose }: ModalLoginProps) {
   });
 
   // 4. Функція сабміту отримує вже чисті дані
-  const onSubmit = (data: IFormInputs) => {
+  const onSubmit = async (data: IFormInputs) => {
     console.log(data); // Тут об'єкт { email: "...", password: "..." }
-    reset(); // Очищення форми
-    // Тут можна викликати onClose(), якщо логін успішний
+    try {
+      setIsLoading(true);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      const user = userCredential.user;
+
+      setUser({
+        uid: user.uid,
+        email: user.email,
+        name: user.displayName,
+      });
+      console.log("GLOBAL USER:", useAuthStore.getState().user);
+      reset(); // Очищення форми
+      onClose();
+      toast.success("Login successful");
+    } catch (error: any) {
+      console.error("Error logging in user:", error);
+      toast.error("Login failed");
+    } finally {
+      setIsLoading(false); // завершення загрузки
+    }
   };
 
   return (
@@ -96,7 +126,7 @@ export default function ModalLogin({ onClose }: ModalLoginProps) {
         </div>
 
         <button className={css.formBtn} type="submit">
-          Log In
+          {isLoading ? "Logging In..." : "Log In"}
         </button>
       </form>
     </ModalWindow>

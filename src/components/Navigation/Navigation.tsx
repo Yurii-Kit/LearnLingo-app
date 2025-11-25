@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { Link, NavLink } from "react-router-dom";
 import LearnLogo from "../../assets/ukraine.svg";
+import { useAuthStore } from "../../lib/store/authStore";
 
 import css from "./Navigation.module.css";
 
@@ -9,6 +10,7 @@ interface ActiveLinkProps {
 }
 
 export default function Navigation() {
+  const isLoggedIn = useAuthStore((state) => !!state.user);
   const getActiveLink = ({ isActive }: ActiveLinkProps) => {
     return clsx(css.link, isActive && css.active);
   };
@@ -25,6 +27,11 @@ export default function Navigation() {
         <NavLink to="/teachers" className={getActiveLink}>
           Teachers
         </NavLink>
+        {isLoggedIn && (
+          <NavLink to="/favorites" className={getActiveLink}>
+            Favorites
+          </NavLink>
+        )}
       </div>
     </nav>
   );

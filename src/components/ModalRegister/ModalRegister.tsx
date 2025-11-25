@@ -7,7 +7,7 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
 import { useAuthStore } from "../../lib/store/authStore";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 import css from "./ModalRegister.module.css";
 
@@ -32,8 +32,8 @@ const loginSchema = Yup.object().shape({
 });
 
 export default function ModalRegister({ onClose }: ModalLoginProps) {
-  const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const setUser = useAuthStore((state) => state.setUser);
 
@@ -48,9 +48,8 @@ export default function ModalRegister({ onClose }: ModalLoginProps) {
   });
 
   const onSubmit = async (data: IFormInputs) => {
-    setIsLoading(true);
-
     try {
+      setIsLoading(true);
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         data.email,
