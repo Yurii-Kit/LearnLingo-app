@@ -4,6 +4,9 @@ import { Suspense } from "react";
 
 import HomePage from "../../pages/HomePage/HomePage";
 import TeachersPage from "../../pages/TeachersPage";
+import Favorites from "../../pages/FavoritePage";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
+import PrivateRoute from "../../pages/PrivateRoute";
 
 import Layout from "../Layout/Layout";
 import SvgSprite from "../Icon/SvgSprite/SvgSprite";
@@ -19,7 +22,11 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/teachers" element={<TeachersPage />} />
-            <Route path="*" element={<HomePage />} />
+            <Route
+              path="/favorites"
+              element={<PrivateRoute component={<Favorites />} />}
+            />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </Layout>
