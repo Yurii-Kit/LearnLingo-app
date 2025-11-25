@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import css from "./HomePage.module.css";
 
 export default function HomePage() {
@@ -16,7 +18,9 @@ export default function HomePage() {
             <br />
             connecting with highly qualified and experienced tutors.
           </p>
-          <button className={css.ctaButton}>Get started</button>
+          <Link to="/teachers" className={css.ctaButton}>
+            Get started
+          </Link>
         </div>
         <div className={css.rightBox}>
           <img

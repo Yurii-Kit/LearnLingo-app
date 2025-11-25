@@ -1,4 +1,5 @@
 import { createPortal } from "react-dom";
+import Icon from "../Icon/Icon";
 
 import css from "../ModalWindow/ModalWindow.module.css";
 
@@ -43,7 +44,7 @@ export default function ModalWindow({ children, onClose }: ModalWindowProps) {
           onClick={onClose}
           aria-label="Close modal"
         >
-          X
+          <Icon name="icon-x" width={32} height={32} />
         </button>
         {children}
       </div>

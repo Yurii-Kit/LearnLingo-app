@@ -1,9 +1,17 @@
+import clsx from "clsx";
 import { Link, NavLink } from "react-router-dom";
 import LearnLogo from "../../assets/ukraine.svg";
 
 import css from "./Navigation.module.css";
 
+interface ActiveLinkProps {
+  isActive: boolean;
+}
+
 export default function Navigation() {
+  const getActiveLink = ({ isActive }: ActiveLinkProps) => {
+    return clsx(css.link, isActive && css.active);
+  };
   return (
     <nav className={css.navigation}>
       <Link to="/" className={css.logoContainer}>
@@ -11,10 +19,10 @@ export default function Navigation() {
         <span className={css.logoText}>LearnLingo</span>
       </Link>
       <div className={css.navLinks}>
-        <NavLink to="/" className={css.link}>
+        <NavLink to="/" className={getActiveLink}>
           Home
         </NavLink>
-        <NavLink to="/teachers" className={css.link}>
+        <NavLink to="/teachers" className={getActiveLink}>
           Teachers
         </NavLink>
       </div>

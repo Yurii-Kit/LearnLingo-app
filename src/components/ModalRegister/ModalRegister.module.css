@@ -1,0 +1,103 @@
+.titleContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 438px;
+    /* height: 112px; */
+}
+
+.title {
+    font-weight: 500;
+    font-size: 40px;
+    /* line-height: 48px; */
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #121417;
+}
+
+.text {
+    font-weight: 400;
+    font-size: 16px;
+
+    /* line-height: 22px; */
+    line-height: 1.375;
+    color: rgba(18, 20, 23, 0.8);
+}
+
+.form {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+
+}
+
+.inputField {
+    border: 1px solid rgba(18, 20, 23, 0.1);
+    border-radius: 12px;
+    padding: 16px 18px;
+    width: 100%;
+
+}
+
+.inputField::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    /* line-height: 22px; */
+    line-height: 1.375;
+    color: #121417;
+}
+
+.inputField:focus {
+    outline: none;
+    border: 1px solid #f4c550;
+    ;
+    box-shadow: 0px 0px 0px 4px rgba(74, 144, 226, 0.2);
+}
+
+.passwordWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.eyeBtn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+
+.formBtn {
+    border-radius: 12px;
+    padding: 16px;
+    width: 438px;
+    background: #f4c550;
+
+    font-weight: 700;
+    font-size: 18px;
+    /* line-height: 28px; */
+    line-height: 1.55556;
+    color: #121417;
+}
+
+.formBtn:hover {
+    background: #ffdc86;
+}
+
+.error {
+    position: absolute;
+    color: red;
+    font-size: 12px;
+    /* margin-top: -8px;
+    margin-bottom: 10px; */
+}
