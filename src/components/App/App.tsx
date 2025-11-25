@@ -7,10 +7,12 @@ import TeachersPage from "../../pages/TeachersPage";
 
 import Layout from "../Layout/Layout";
 import SvgSprite from "../Icon/SvgSprite/SvgSprite";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <>
+      <Toaster />
       <SvgSprite />
       <Layout>
         <Suspense fallback={null}>

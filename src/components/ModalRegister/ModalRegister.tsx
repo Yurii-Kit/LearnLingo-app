@@ -4,6 +4,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ModalWindow from "../ModalWindow/ModalWindow";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
+import { useAuthStore } from "../../lib/store/authStore";
+import toast, { Toaster } from "react-hot-toast";
+
 import css from "./ModalRegister.module.css";
 
 interface ModalLoginProps {
@@ -28,6 +33,9 @@ const loginSchema = Yup.object().shape({
 
 export default function ModalRegister({ onClose }: ModalLoginProps) {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const setUser = useAuthStore((state) => state.setUser);
 
   const {
     register,
@@ -39,10 +47,40 @@ export default function ModalRegister({ onClose }: ModalLoginProps) {
     mode: "onBlur",
   });
 
-  const onSubmit = (data: IFormInputs) => {
-    console.log(data);
-    reset();
-    // Тут можна викликати onClose(), якщо логін успішний
+  const onSubmit = async (data: IFormInputs) => {
+    setIsLoading(true);
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+
+      const user = userCredential.user;
+
+      await updateProfile(user, {
+        displayName: data.name,
+      });
+      console.log("Registered user:", user);
+
+      // Оновлюємо глобальний стан
+      setUser({
+        uid: user.uid,
+        email: user.email,
+        name: user.displayName,
+      });
+      console.log("GLOBAL USER:", useAuthStore.getState().user);
+
+      reset();
+      onClose();
+      toast.success("Registration successful");
+    } catch (error: any) {
+      console.error("Error registering user:", error);
+      toast.error("Registration failed");
+    } finally {
+      setIsLoading(false); // завершення загрузки
+    }
   };
   return (
     <ModalWindow onClose={onClose}>
@@ -96,8 +134,8 @@ export default function ModalRegister({ onClose }: ModalLoginProps) {
             {showPassword ? <FiEye size={20} /> : <FiEyeOff size={20} />}
           </button>
         </div>
-        <button className={css.formBtn} type="submit">
-          Sign Up
+        <button className={css.formBtn} type="submit" disabled={isLoading}>
+          {isLoading ? "Signing Up..." : "Sign Up"}
         </button>
       </form>
     </ModalWindow>
