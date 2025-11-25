@@ -4,7 +4,7 @@ import css from "./HomePage.module.css";
 
 export default function HomePage() {
   return (
-    <main>
+    <>
       <section className={css.hero}>
         <div className={css.leftBox}>
           <h1 className={css.title}>
@@ -55,6 +55,6 @@ export default function HomePage() {
           </li>
         </ul>
       </section>
-    </main>
+    </>
   );
 }

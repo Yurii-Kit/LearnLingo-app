@@ -1,0 +1,16 @@
+.teachersPage {
+    background: #f8f8f8;
+}
+
+.filters {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 20px;
+
+    padding: 20px 64px;
+
+    width: 583px;
+    height: 74px;
+}
