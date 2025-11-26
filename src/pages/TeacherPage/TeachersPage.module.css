@@ -1,5 +1,6 @@
 .teachersPage {
     background: #f8f8f8;
+    padding: 20px 0 64px 0;
 }
 
 .filtersContainer {
@@ -8,22 +9,4 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
-}
-
-.filters {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: row;
-    gap: 20px;
-    width: 583px;
-
-}
-
-.filterLabel {
-    font-weight: 500;
-    font-size: 14px;
-    /* line-height: 18px; */
-    line-height: 1.28571;
-    color: #8a8a89;
 }

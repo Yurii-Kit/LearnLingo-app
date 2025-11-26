@@ -1,7 +1,7 @@
-import Select from "react-select";
-
 import css from "./TeachersPage.module.css";
 import Container from "../../components/Container/Container";
+import SelectorField from "../../components/SelectorField/SelectorField";
+import SelectInput from "../../components/SelectInput/SelectInput";
 
 const options = [
   { value: "chocolate", label: "Chocolate" },
@@ -13,39 +13,11 @@ export default function TeachersPage() {
   return (
     <section className={css.teachersPage}>
       <Container className={css.filtersContainer}>
-        <div className={css.filters}>
-          <div className={css.filterWrapper}>
-            <label className={css.filterLabel} htmlFor="language">
-              Languages
-            </label>
-            <Select
-              className={css.select}
-              inputId="language"
-              defaultValue={options[0]}
-              options={options}
-            />
-          </div>
-          <div className={css.filterWrapper}>
-            <label className={css.filterLabel} htmlFor="language">
-              Languages
-            </label>
-            <Select
-              inputId="language"
-              defaultValue={options[0]}
-              options={options}
-            />
-          </div>
-          <div className={css.filterWrapper}>
-            <label className={css.filterLabel} htmlFor="language">
-              Languages
-            </label>
-            <Select
-              inputId="language"
-              defaultValue={options[0]}
-              options={options}
-            />
-          </div>
-        </div>
+        <SelectorField>
+          <SelectInput label="Languages" options={options} />
+          <SelectInput label="Level of knowledge" options={options} />
+          <SelectInput label="Price" options={options} />
+        </SelectorField>
         <section>fdjghdhgjdfhgkjfgh</section>
       </Container>
     </section>
