@@ -1,10 +1,4 @@
-interface IconProps extends React.SVGProps<SVGSVGElement> {
-  name: string;
-  width?: number;
-  height?: number;
-  className?: string;
-  fill?: string;
-}
+import type { IconProps } from "../../types";
 
 const Icon = ({
   name,

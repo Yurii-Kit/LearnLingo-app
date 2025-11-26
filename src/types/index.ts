@@ -1,0 +1,160 @@
+// ============================================
+// Teacher & Reviews Types
+// ============================================
+
+export interface Review {
+  reviewer_name: string;
+  reviewer_rating: number;
+  comment: string;
+}
+
+export interface Teacher {
+  id?: string;
+  name: string;
+  surname: string;
+  languages: string[];
+  levels: string[];
+  rating: number;
+  reviews: Review[];
+  price_per_hour: number;
+  lessons_done: number;
+  avatar_url: string;
+  lesson_info: string;
+  conditions: string[];
+  experience: string;
+}
+
+// ============================================
+// Store State Types
+// ============================================
+
+// Auth Store Types
+export interface User {
+  uid: string;
+  email: string | null;
+  name?: string | null;
+}
+
+export interface AuthState {
+  user: User | null;
+  isLoading?: boolean;
+  setUser: (user: User | null) => void;
+  clearUser: () => void;
+  setIsLoading: (state: boolean) => void;
+}
+
+// Teachers Store Types
+export interface TeachersState {
+  teachers: Teacher[];
+  setTeachers: (teachers: Teacher[]) => void;
+  isLoading?: boolean;
+  setIsLoading: (isLoading: boolean) => void;
+  isError?: boolean;
+  setIsError: (isError: boolean) => void;
+}
+
+// Options Store Types
+export interface LanguageOption {
+  label: string;
+  value: string;
+}
+
+export interface LevelOption {
+  label: string;
+  value: string;
+}
+
+export interface PriceOption {
+  label: string;
+  value: string;
+}
+
+export interface OptionsState {
+  languageOptions: LanguageOption[];
+  setLanguageOptions: (languages: LanguageOption[]) => void;
+  levelOptions: LevelOption[];
+  setLevelOptions: (levels: LevelOption[]) => void;
+  priceOptions: PriceOption[];
+  setPriceOptions: (prices: PriceOption[]) => void;
+}
+
+// ============================================
+// Component Props Types
+// ============================================
+
+// Common Props
+export interface ChildrenProps {
+  children: React.ReactNode;
+}
+
+export interface ContainerProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+// Modal Props
+export interface ModalWindowProps {
+  children: React.ReactNode;
+  onClose: () => void;
+}
+
+export interface ModalLoginProps {
+  onClose: () => void;
+}
+
+export interface ModalRegisterProps {
+  onClose: () => void;
+}
+
+// Form Input Types
+export interface LoginFormInputs {
+  email: string;
+  password: string;
+}
+
+export interface RegisterFormInputs {
+  name: string;
+  email: string;
+  password: string;
+}
+
+// Select Input Types
+export interface OptionType {
+  value: string;
+  label: string;
+}
+
+export interface SelectInputProps {
+  label: string;
+  options: OptionType[];
+  defaultValue?: OptionType;
+  onChange?: (option: OptionType | null) => void;
+}
+
+// Teacher Card Props
+export interface TeacherCardProps {
+  teacher: Teacher;
+}
+
+// Navigation Props
+export interface ActiveLinkProps {
+  isActive: boolean;
+}
+
+// Icon Props
+export interface IconProps extends React.SVGProps<SVGSVGElement> {
+  name: string;
+  width?: number;
+  height?: number;
+  className?: string;
+  fill?: string;
+}
+
+// Route Props
+export interface PrivateRouteProps {
+  component: React.ReactElement;
+}
+
+export interface SelectorFieldProps {
+  children: React.ReactNode;
+}

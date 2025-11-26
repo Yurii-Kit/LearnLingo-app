@@ -1,0 +1,200 @@
+{
+  "teachers": [
+    {
+      "name": "Maria",
+      "surname": "Garcia",
+      "languages": ["English", "Spanish"],
+      "levels": [
+        "A1 Beginner",
+        "A2 Elementary",
+        "B1 Intermediate",
+        "B2 Upper-Intermediate"
+      ],
+      "rating": 4.9,
+      "reviews": [
+        {
+          "reviewer_name": "John Smith",
+          "reviewer_rating": 5,
+          "comment": "Maria is an excellent teacher! Very patient and explains everything clearly."
+        },
+        {
+          "reviewer_name": "Emma Wilson",
+          "reviewer_rating": 5,
+          "comment": "Best Spanish teacher I've ever had!"
+        }
+      ],
+      "price_per_hour": 35,
+      "lessons_done": 250,
+      "avatar_url": "https://i.pravatar.cc/150?img=1",
+      "lesson_info": "Passionate about teaching languages with 8 years of experience",
+      "conditions": [
+        "Online lessons",
+        "Flexible schedule",
+        "Homework provided"
+      ],
+      "experience": "I've been teaching Spanish and English for 8 years. I have a degree in linguistics and love helping students achieve their language goals."
+    },
+    {
+      "name": "David",
+      "surname": "Chen",
+      "languages": ["English", "Mandarin"],
+      "levels": ["A1 Beginner", "A2 Elementary", "B1 Intermediate"],
+      "rating": 4.7,
+      "reviews": [
+        {
+          "reviewer_name": "Sarah Brown",
+          "reviewer_rating": 5,
+          "comment": "David makes learning Chinese fun and easy!"
+        },
+        {
+          "reviewer_name": "Michael Lee",
+          "reviewer_rating": 4,
+          "comment": "Good teacher, very knowledgeable."
+        }
+      ],
+      "price_per_hour": 40,
+      "lessons_done": 180,
+      "avatar_url": "https://i.pravatar.cc/150?img=12",
+      "lesson_info": "Native Mandarin speaker with experience teaching English",
+      "conditions": [
+        "Online lessons",
+        "Custom materials",
+        "Business Chinese available"
+      ],
+      "experience": "Native Mandarin speaker with 5 years of teaching experience. I specialize in conversational Chinese and business language."
+    },
+    {
+      "name": "Sophie",
+      "surname": "Dubois",
+      "languages": ["French", "English"],
+      "levels": [
+        "A2 Elementary",
+        "B1 Intermediate",
+        "B2 Upper-Intermediate",
+        "C1 Advanced"
+      ],
+      "rating": 4.8,
+      "reviews": [
+        {
+          "reviewer_name": "James Taylor",
+          "reviewer_rating": 5,
+          "comment": "Sophie is amazing! Her teaching methods are very effective."
+        }
+      ],
+      "price_per_hour": 45,
+      "lessons_done": 320,
+      "avatar_url": "https://i.pravatar.cc/150?img=5",
+      "lesson_info": "French native speaker specializing in advanced conversation",
+      "conditions": [
+        "Online lessons",
+        "Exam preparation",
+        "Cultural immersion"
+      ],
+      "experience": "Born and raised in Paris, I've been teaching French for 10 years. I focus on natural conversation and cultural context."
+    },
+    {
+      "name": "Anna",
+      "surname": "Müller",
+      "languages": ["German", "English"],
+      "levels": [
+        "A1 Beginner",
+        "A2 Elementary",
+        "B1 Intermediate",
+        "B2 Upper-Intermediate"
+      ],
+      "rating": 4.6,
+      "reviews": [
+        {
+          "reviewer_name": "Peter Johnson",
+          "reviewer_rating": 5,
+          "comment": "Very professional and well-prepared for each lesson."
+        },
+        {
+          "reviewer_name": "Lisa Anderson",
+          "reviewer_rating": 4,
+          "comment": "Good teacher, helps a lot with grammar."
+        }
+      ],
+      "price_per_hour": 38,
+      "lessons_done": 195,
+      "avatar_url": "https://i.pravatar.cc/150?img=9",
+      "lesson_info": "Certified German teacher with focus on grammar and structure",
+      "conditions": [
+        "Online lessons",
+        "Homework assignments",
+        "Regular progress tests"
+      ],
+      "experience": "I'm a certified German teacher with 6 years of experience. I believe in a structured approach to language learning."
+    },
+    {
+      "name": "Carlos",
+      "surname": "Rodriguez",
+      "languages": ["Spanish", "English", "Portuguese"],
+      "levels": ["A1 Beginner", "A2 Elementary", "B1 Intermediate"],
+      "rating": 4.9,
+      "reviews": [
+        {
+          "reviewer_name": "Jennifer White",
+          "reviewer_rating": 5,
+          "comment": "Carlos is fantastic! Very engaging and makes learning fun."
+        },
+        {
+          "reviewer_name": "Robert Garcia",
+          "reviewer_rating": 5,
+          "comment": "Best language teacher ever!"
+        },
+        {
+          "reviewer_name": "Amanda Davis",
+          "reviewer_rating": 5,
+          "comment": "Highly recommend! Very patient and encouraging."
+        }
+      ],
+      "price_per_hour": 30,
+      "lessons_done": 280,
+      "avatar_url": "https://i.pravatar.cc/150?img=13",
+      "lesson_info": "Multilingual teacher passionate about Latin languages",
+      "conditions": [
+        "Online lessons",
+        "Flexible hours",
+        "Conversational focus"
+      ],
+      "experience": "Native Spanish speaker who also speaks Portuguese and English fluently. I've been teaching for 7 years and love helping students become confident speakers."
+    },
+    {
+      "name": "Yuki",
+      "surname": "Tanaka",
+      "languages": ["Japanese", "English"],
+      "levels": [
+        "A1 Beginner",
+        "A2 Elementary",
+        "B1 Intermediate",
+        "B2 Upper-Intermediate",
+        "C1 Advanced"
+      ],
+      "rating": 5.0,
+      "reviews": [
+        {
+          "reviewer_name": "Thomas Miller",
+          "reviewer_rating": 5,
+          "comment": "Yuki is incredibly patient and knowledgeable. Best Japanese teacher!"
+        },
+        {
+          "reviewer_name": "Rachel Green",
+          "reviewer_rating": 5,
+          "comment": "Amazing teacher! Makes Japanese grammar easy to understand."
+        }
+      ],
+      "price_per_hour": 50,
+      "lessons_done": 420,
+      "avatar_url": "https://i.pravatar.cc/150?img=20",
+      "lesson_info": "Native Japanese speaker with expertise in JLPT preparation",
+      "conditions": [
+        "Online lessons",
+        "JLPT preparation",
+        "Cultural lessons",
+        "Anime/Manga Japanese"
+      ],
+      "experience": "I'm from Tokyo and have been teaching Japanese for 12 years. I specialize in JLPT preparation and can help with both formal and casual Japanese."
+    }
+  ]
+}

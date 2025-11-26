@@ -7,19 +7,9 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
 import css from "./ModalLogin.module.css";
-
+import type { ModalLoginProps, LoginFormInputs } from "../../types";
 import { useAuthStore } from "../../lib/store/authStore";
 import { toast } from "react-hot-toast/headless";
-
-interface ModalLoginProps {
-  onClose: () => void;
-}
-
-// 1. Типізація форми
-interface IFormInputs {
-  email: string;
-  password: string;
-}
 
 // 2. Схема валидації з Yup
 const loginSchema = Yup.object().shape({
@@ -43,13 +33,13 @@ export default function ModalLogin({ onClose }: ModalLoginProps) {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<IFormInputs>({
+  } = useForm<LoginFormInputs>({
     resolver: yupResolver(loginSchema), // Підключаємо Yup
     mode: "onBlur", // Валідація спрацює, коли користувач прибере фокус (або "onChange")
   });
 
   // 4. Функція сабміту отримує вже чисті дані
-  const onSubmit = async (data: IFormInputs) => {
+  const onSubmit = async (data: LoginFormInputs) => {
     console.log(data); // Тут об'єкт { email: "...", password: "..." }
     try {
       setIsLoading(true);

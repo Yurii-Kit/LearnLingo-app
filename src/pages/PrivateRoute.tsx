@@ -1,11 +1,8 @@
 import { Navigate } from "react-router-dom";
 import { useAuthStore } from "../lib/store/authStore";
+import type { PrivateRouteProps } from "../types";
 
-interface Props {
-  component: React.ReactElement;
-}
-
-export default function PrivateRoute({ component }: Props) {
+export default function PrivateRoute({ component }: PrivateRouteProps) {
   const isLoggedIn = useAuthStore((state) => !!state.user);
 
   return isLoggedIn ? component : <Navigate to="/" />;

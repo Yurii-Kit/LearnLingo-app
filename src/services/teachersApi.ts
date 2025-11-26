@@ -1,48 +1,38 @@
 import { ref, get } from "firebase/database";
 import { db } from "../firebase/firebase";
-
-export interface Review {
-  reviewer_name: string;
-  reviewer_rating: number;
-  comment: string;
-}
-
-export interface Teacher {
-  id?: string;
-  name: string;
-  surname: string;
-  languages: string[];
-  levels: string[];
-  rating: number;
-  reviews: Review[];
-  price_per_hour: number;
-  lessons_done: number;
-  avatar_url: string;
-  lesson_info: string;
-  conditions: string[];
-  experience: string;
-}
+import type { Teacher } from "../types";
 
 export const fetchTeachers = async (): Promise<Teacher[]> => {
   try {
     const teachersRef = ref(db, "teachers");
+
     const snapshot = await get(teachersRef);
 
     if (snapshot.exists()) {
       const data = snapshot.val();
+      console.log(data);
+
       // Якщо дані у вигляді масиву
       if (Array.isArray(data)) {
-        return data;
+        return data.filter((item) => item !== null); // Фільтруємо null елементи
       }
       // Якщо дані у вигляді об'єкта з ключами
-      return Object.entries(data).map(([id, teacher]) => ({
+      const teachers = Object.entries(data).map(([id, teacher]) => ({
         id,
         ...(teacher as Teacher),
       }));
+
+      return teachers;
     }
+
     return [];
   } catch (error) {
     console.error("Error fetching teachers:", error);
+    console.error("Error details:", {
+      message: error instanceof Error ? error.message : "Unknown error",
+      code: (error as any)?.code,
+      stack: error instanceof Error ? error.stack : undefined,
+    });
     throw error;
   }
 };

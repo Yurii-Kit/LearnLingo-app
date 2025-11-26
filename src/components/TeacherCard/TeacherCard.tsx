@@ -1,11 +1,6 @@
 import { useState } from "react";
-import type { Teacher } from "../../services/teachersApi";
-
+import type { TeacherCardProps } from "../../types";
 import css from "./TeacherCard.module.css";
-
-interface TeacherCardProps {
-  teacher: Teacher;
-}
 
 export default function TeacherCard({ teacher }: TeacherCardProps) {
   const [showMore, setShowMore] = useState(false);
@@ -74,6 +69,14 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
           </button>
         )}
 
+        <div className={css.levels}>
+          {teacher.levels.map((level) => (
+            <span key={level} className={css.levelBadge}>
+              #{level}
+            </span>
+          ))}
+        </div>
+
         {showMore && (
           <>
             <p className={css.experience}>{teacher.experience}</p>
@@ -91,14 +94,6 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
                   </div>
                   <p className={css.reviewComment}>{review.comment}</p>
                 </div>
-              ))}
-            </div>
-
-            <div className={css.levels}>
-              {teacher.levels.map((level) => (
-                <span key={level} className={css.levelBadge}>
-                  #{level}
-                </span>
               ))}
             </div>
           </>

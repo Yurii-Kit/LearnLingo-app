@@ -8,18 +8,8 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
 import { useAuthStore } from "../../lib/store/authStore";
 import toast from "react-hot-toast";
-
+import type { ModalRegisterProps, RegisterFormInputs } from "../../types";
 import css from "./ModalRegister.module.css";
-
-interface ModalLoginProps {
-  onClose: () => void;
-}
-
-interface IFormInputs {
-  name: string;
-  email: string;
-  password: string;
-}
 
 const loginSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
@@ -31,7 +21,7 @@ const loginSchema = Yup.object().shape({
     .required("Password is required"),
 });
 
-export default function ModalRegister({ onClose }: ModalLoginProps) {
+export default function ModalRegister({ onClose }: ModalRegisterProps) {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -42,12 +32,12 @@ export default function ModalRegister({ onClose }: ModalLoginProps) {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<IFormInputs>({
+  } = useForm<RegisterFormInputs>({
     resolver: yupResolver(loginSchema),
     mode: "onBlur",
   });
 
-  const onSubmit = async (data: IFormInputs) => {
+  const onSubmit = async (data: RegisterFormInputs) => {
     try {
       setIsLoading(true);
       const userCredential = await createUserWithEmailAndPassword(

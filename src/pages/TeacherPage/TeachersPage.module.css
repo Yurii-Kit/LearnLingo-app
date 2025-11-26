@@ -1,12 +1,33 @@
-.teachersPage {
-    background: #f8f8f8;
-    padding: 20px 0 64px 0;
-}
-
 .filtersContainer {
     background-color: inherit;
     padding: 0 128px;
     display: flex;
     flex-direction: column;
     gap: 32px;
+}
+
+.teachersPage {
+    background: #f8f8f8;
+    padding: 32px 0;
+    min-height: calc(100vh - 100px);
+}
+
+
+
+.teachersList {
+    margin-top: 32px;
+}
+
+.error {
+    text-align: center;
+    color: #e74c3c;
+    font-size: 18px;
+    padding: 32px;
+}
+
+.noResults {
+    text-align: center;
+    color: #8a8a89;
+    font-size: 18px;
+    padding: 32px;
 }

@@ -2,12 +2,8 @@ import clsx from "clsx";
 import { Link, NavLink } from "react-router-dom";
 import LearnLogo from "../../assets/ukraine.svg";
 import { useAuthStore } from "../../lib/store/authStore";
-
+import type { ActiveLinkProps } from "../../types";
 import css from "./Navigation.module.css";
-
-interface ActiveLinkProps {
-  isActive: boolean;
-}
 
 export default function Navigation() {
   const isLoggedIn = useAuthStore((state) => !!state.user);

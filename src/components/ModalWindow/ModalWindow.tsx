@@ -1,14 +1,8 @@
 import { createPortal } from "react-dom";
 import Icon from "../Icon/Icon";
-
-import css from "../ModalWindow/ModalWindow.module.css";
-
 import { useEffect } from "react";
-
-interface ModalWindowProps {
-  children: React.ReactNode;
-  onClose: () => void;
-}
+import type { ModalWindowProps } from "../../types";
+import css from "../ModalWindow/ModalWindow.module.css";
 
 export default function ModalWindow({ children, onClose }: ModalWindowProps) {
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
