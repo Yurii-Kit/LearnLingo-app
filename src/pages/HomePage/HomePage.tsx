@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import Container from "../../components/Container/Container";
 
 import css from "./HomePage.module.css";
 
 export default function HomePage() {
   return (
-    <>
+    <Container className={css.heroContainer}>
       <section className={css.hero}>
         <div className={css.leftBox}>
           <h1 className={css.title}>
@@ -55,6 +56,6 @@ export default function HomePage() {
           </li>
         </ul>
       </section>
-    </>
+    </Container>
   );
 }
