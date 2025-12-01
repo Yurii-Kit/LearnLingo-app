@@ -125,6 +125,7 @@ export interface OptionType {
 }
 
 export interface SelectInputProps {
+  width?: string;
   label: string;
   options: OptionType[];
   defaultValue?: OptionType;

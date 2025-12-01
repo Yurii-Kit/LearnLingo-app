@@ -127,16 +127,19 @@ export default function TeachersPage() {
       <Container className={css.filtersContainer}>
         <SelectorField>
           <SelectInput
+            width="221px"
             label="Languages"
             options={languageOptions}
             onChange={(option) => setSelectedLanguage(option?.value || null)}
           />
           <SelectInput
+            width="198px"
             label="Level of knowledge"
             options={levelOptions}
             onChange={(option) => setSelectedLevel(option?.value || null)}
           />
           <SelectInput
+            width="124px"
             label="Price"
             options={priceOptions}
             onChange={(option) => setSelectedPrice(option?.value || null)}
@@ -150,7 +153,7 @@ export default function TeachersPage() {
             </p>
           ) : (
             filteredTeachers.map((teacher, index) => (
-              <TeacherCard key={teacher.id || index} teacher={teacher} />
+              <TeacherCard key={index} teacher={teacher} />
             ))
           )}
         </section>

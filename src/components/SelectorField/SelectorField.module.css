@@ -4,5 +4,5 @@
     justify-content: flex-start;
     flex-direction: row;
     gap: 20px;
-    width: 583px;
+    min-width: 583px;
 }

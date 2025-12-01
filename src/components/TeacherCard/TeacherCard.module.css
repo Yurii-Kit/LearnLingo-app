@@ -8,52 +8,124 @@
 }
 
 .avatarWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #fbe9ba;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    padding: 9px;
     flex-shrink: 0;
 }
 
 .avatar {
-    width: 120px;
-    height: 120px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #fbe9ba;
+
 }
+
+.spot {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+
+}
+
 
 .content {
     flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 32px;
 }
 
-.header {
+.mainInfo {
     display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.headerInfo {
+    display: flex;
+    align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 16px;
+    padding: 0;
+
+}
+
+.title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .subtitle {
-    color: #8a8a89;
+    font-weight: 500;
     font-size: 16px;
-    margin-bottom: 8px;
+    /* line-height: 24px; */
+    line-height: 1.5;
+    color: #8a8a89;
 }
 
 .name {
-    font-size: 24px;
     font-weight: 500;
-    margin: 0;
+    font-size: 24px;
+    /* line-height: 24px; */
+    line-height: 1;
+    color: #121417;
 }
 
 .stats {
     display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 64px;
+}
+
+.statsList {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     gap: 16px;
     font-size: 16px;
 }
 
 .statItem {
-    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.bookOpen {
+    stroke: #121417;
+}
+
+.statText {
+    font-weight: 500;
+    font-size: 16px;
+    /* line-height: 24px; */
+    line-height: 1.5;
+    color: #121417;
 }
 
 .price {
     color: #38cd3e;
     font-weight: 500;
+}
+
+.heart {
+    stroke: #121417;
 }
 
 .info {
