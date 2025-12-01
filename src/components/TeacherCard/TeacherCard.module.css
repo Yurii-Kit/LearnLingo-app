@@ -47,12 +47,15 @@
 
 .mainInfo {
     display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
     flex-direction: column;
     gap: 16px;
     width: 100%;
 }
 
 .headerInfo {
+    width: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -95,16 +98,29 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 16px;
+    gap: 32px;
     font-size: 16px;
 }
 
 .statItem {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
     gap: 8px;
+}
+
+.statItem:not(:last-child)::after {
+    position: absolute;
+    content: "";
+    right: -16px;
+    width: 1px;
+    height: 16px;
+    display: inline-block;
+    background-color: rgba(18, 20, 23, 0.2);
+
+
 }
 
 .bookOpen {
@@ -129,20 +145,32 @@
 }
 
 .info {
-    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .infoItem {
-    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 16px;
+    /* line-height: 24px; */
     line-height: 1.5;
+    color: #8a8a89;
+
+
 }
 
-.infoLabel {
-    color: #8a8a89;
+.infoItemLang {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: #121417;
+}
+
+.infoItemDesc {
+    color: #121417;
 }
 
 .readMoreBtn {
-    background: none;
     border: none;
     color: #121417;
     text-decoration: underline;
@@ -152,48 +180,136 @@
     font-weight: 500;
 }
 
+.levelsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+}
+
+.levelsList li:first-child {
+    background: #f4c550;
+    border: transparent;
+}
+
+.levelBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 12px;
+    border-radius: 35px;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.14;
+    color: #121417;
+
+    border: 1px solid rgba(18, 20, 23, 0.2);
+}
+
 .experience {
-    margin-bottom: 24px;
+    font-weight: 400;
+    font-size: 16px;
+    /* line-height: 24px; */
     line-height: 1.5;
+    color: #121417;
 }
 
 .reviews {
-    margin-bottom: 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 32px;
 }
 
 .review {
-    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+
+.reviewUser {
+    display: flex;
+    gap: 16px;
+
 }
 
 .reviewHeader {
     display: flex;
-    gap: 16px;
-    margin-bottom: 8px;
+    align-items: center;
+    gap: 12px;
+}
+
+.reviewUserImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ffc531;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reviewerInfo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .reviewerName {
     font-weight: 500;
+    font-size: 16px;
+
+    /* line-height: 24px; */
+    line-height: 1.5;
+    color: #8a8a89;
 }
 
 .reviewRating {
-    color: #ffc531;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-weight: 500;
+    font-size: 14px;
+
+    /* line-height: 18px; */
+    line-height: 1.28571;
+    color: #121417;
 }
+
+
 
 .reviewComment {
-    color: #8a8a89;
-    line-height: 1.5;
-}
-
-.levels {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.levelBadge {
-    padding: 8px 12px;
-    background-color: #f4f4f4;
-    border-radius: 35px;
-    font-size: 14px;
     font-weight: 500;
+    font-size: 16px;
+
+    /* line-height: 24px; */
+    line-height: 1.5;
+    color: #121417;
+}
+
+.contactBtn {
+
+    padding: 16px 48px;
+    background-color: #f4c550;
+
+    border: none;
+    border-radius: 12px;
+
+    font-weight: 700;
+    font-size: 18px;
+    /* line-height: 28px; */
+    line-height: 1.55556;
+    color: #121417;
+}
+
+.contactBtn:hover {
+    background-color: #ffdc86;
+
 }

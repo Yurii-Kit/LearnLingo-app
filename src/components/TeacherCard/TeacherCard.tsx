@@ -41,16 +41,27 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
                 </li>
 
                 <li className={css.statItem}>
-                  <span>Lessons done: {teacher.lessons_done}</span>
+                  <p className={css.statText}>
+                    Lessons done: {teacher.lessons_done}
+                  </p>
                 </li>
                 <li className={css.statItem}>
-                  <span>Rating: {teacher.rating}</span>
+                  <Icon
+                    name="star"
+                    width={16}
+                    height={16}
+                    className={css.star}
+                  />
+                  <p className={css.statText}>Rating: {teacher.rating}</p>
                 </li>
                 <li className={css.statItem}>
-                  <span>
+                  <p className={css.statText}>
                     Price / 1 hour:
-                    <span className={css.price}>{teacher.price_per_hour}$</span>
-                  </span>
+                    <span className={css.price}>
+                      {" "}
+                      {teacher.price_per_hour}$
+                    </span>
+                  </p>
                 </li>
               </ul>
               <button type="button" className={css.favoriteBtn}>
@@ -66,62 +77,77 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
 
           <div className={css.info}>
             <p className={css.infoItem}>
-              <span className={css.infoLabel}>Speaks:</span>
+              Speaks:{" "}
               {teacher.languages.map((lang, index) => (
-                <span key={lang}>
+                <span key={lang} className={css.infoItemLang}>
                   {lang}
                   {index < teacher.languages.length - 1 && ", "}
                 </span>
               ))}
             </p>
             <p className={css.infoItem}>
-              <span className={css.infoLabel}>Lesson Info:</span>
-              {teacher.lesson_info}
+              Lesson Info:{" "}
+              <span className={css.infoItemDesc}>{teacher.lesson_info}</span>
             </p>
             <p className={css.infoItem}>
-              <span className={css.infoLabel}>Conditions:</span>
-              {teacher.conditions.join(" ")}
+              Conditions:{" "}
+              <span className={css.infoItemDesc}>
+                {teacher.conditions.join(" ")}
+              </span>
             </p>
           </div>
 
-          {!showMore && (
+          {!showMore ? (
             <button
               onClick={() => setShowMore(true)}
               className={css.readMoreBtn}
             >
               Read more
             </button>
+          ) : (
+            <p className={css.experience}>{teacher.experience}</p>
           )}
-        </div>
-
-        <div className={css.levels}>
-          {teacher.levels.map((level) => (
-            <span key={level} className={css.levelBadge}>
-              #{level}
-            </span>
-          ))}
         </div>
 
         {showMore && (
           <>
-            <p className={css.experience}>{teacher.experience}</p>
-
             <div className={css.reviews}>
               {teacher.reviews.map((review, index) => (
                 <div key={index} className={css.review}>
-                  <div className={css.reviewHeader}>
-                    <span className={css.reviewerName}>
-                      {review.reviewer_name}
-                    </span>
-                    <span className={css.reviewRating}>
-                      ★ {review.reviewer_rating}
-                    </span>
+                  <div className={css.reviewUser}>
+                    <div className={css.reviewHeader}>
+                      <strong className={css.reviewUserImage}>
+                        {review.reviewer_name[0].toUpperCase()}
+                      </strong>
+                      <div className={css.reviewerInfo}>
+                        <span className={css.reviewerName}>
+                          {review.reviewer_name}
+                        </span>
+                        <span className={css.reviewRating}>
+                          <Icon name="star" width={16} height={16} />
+                          {review.reviewer_rating.toFixed(1)}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                   <p className={css.reviewComment}>{review.comment}</p>
                 </div>
               ))}
             </div>
           </>
+        )}
+
+        <ul className={css.levelsList}>
+          {teacher.levels.map((level, index) => (
+            <li key={index} className={css.levelBadge}>
+              #{level}
+            </li>
+          ))}
+        </ul>
+        {showMore && (
+          <button type="button" className={css.contactBtn}>
+            Book trial lesson
+          </button>
         )}
       </div>
     </div>
