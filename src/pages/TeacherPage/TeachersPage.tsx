@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import css from "./TeachersPage.module.css";
 import Container from "../../components/Container/Container";
 import SelectorField from "../../components/SelectorField/SelectorField";
-import SelectInput from "../../components/SelectInput/SelectInput";
-import TeacherCard from "../../components/TeacherCard/TeacherCard";
+import TeacherList from "../../components/TeacherList/TeacherList";
 import LoaderOverlay from "../../components/LoaderOverlay/LoaderOverlay";
 import type { Teacher } from "../../types";
 import {
@@ -45,13 +44,13 @@ export default function TeachersPage() {
     const loadTeachers = async () => {
       try {
         setIsLoading(true);
+        // Завантажити вчителів
         const data = await fetchTeachers();
         setTeachers(data);
         setFilteredTeachers(data);
 
         // Створити опції для селектів
         const languages = getUniqueLanguages(data);
-
         setLanguageOptions(
           languages.map((lang) => ({ value: lang, label: lang }))
         );
@@ -125,38 +124,15 @@ export default function TeachersPage() {
   return (
     <section className={css.teachersPage}>
       <Container className={css.filtersContainer}>
-        <SelectorField>
-          <SelectInput
-            width="221px"
-            label="Languages"
-            options={languageOptions}
-            onChange={(option) => setSelectedLanguage(option?.value || null)}
-          />
-          <SelectInput
-            width="198px"
-            label="Level of knowledge"
-            options={levelOptions}
-            onChange={(option) => setSelectedLevel(option?.value || null)}
-          />
-          <SelectInput
-            width="124px"
-            label="Price"
-            options={priceOptions}
-            onChange={(option) => setSelectedPrice(option?.value || null)}
-          />
-        </SelectorField>
-
-        <section className={css.teachersList}>
-          {filteredTeachers.length === 0 ? (
-            <p className={css.noResults}>
-              No teachers found with selected filters.
-            </p>
-          ) : (
-            filteredTeachers.map((teacher, index) => (
-              <TeacherCard key={index} teacher={teacher} />
-            ))
-          )}
-        </section>
+        <SelectorField
+          languageOptions={languageOptions}
+          levelOptions={levelOptions}
+          priceOptions={priceOptions}
+          setSelectedLanguage={setSelectedLanguage}
+          setSelectedLevel={setSelectedLevel}
+          setSelectedPrice={setSelectedPrice}
+        />
+        <TeacherList filteredTeachers={filteredTeachers} />
       </Container>
     </section>
   );

@@ -123,13 +123,27 @@ export interface OptionType {
   value: string;
   label: string;
 }
-
+// Select Input Props
 export interface SelectInputProps {
   width?: string;
   label: string;
   options: OptionType[];
   defaultValue?: OptionType;
   onChange?: (option: OptionType | null) => void;
+}
+//
+export interface SelectorFieldProps {
+  languageOptions: { value: string; label: string }[];
+  levelOptions: { value: string; label: string }[];
+  priceOptions: { value: string; label: string }[];
+  setSelectedLanguage: (value: string | null) => void;
+  setSelectedLevel: (value: string | null) => void;
+  setSelectedPrice: (value: string | null) => void;
+}
+
+// Teacher List Props
+export interface TeacherListProps {
+  filteredTeachers: Teacher[];
 }
 
 // Teacher Card Props
@@ -154,8 +168,4 @@ export interface IconProps extends React.SVGProps<SVGSVGElement> {
 // Route Props
 export interface PrivateRouteProps {
   component: React.ReactElement;
-}
-
-export interface SelectorFieldProps {
-  children: React.ReactNode;
 }

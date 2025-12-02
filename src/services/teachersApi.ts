@@ -2,6 +2,7 @@ import { ref, get } from "firebase/database";
 import { db } from "../firebase/firebase";
 import type { Teacher } from "../types";
 
+// Функція для отримання списку вчителів з Firebase Realtime Database
 export const fetchTeachers = async (): Promise<Teacher[]> => {
   try {
     const teachersRef = ref(db, "teachers");
@@ -16,15 +17,16 @@ export const fetchTeachers = async (): Promise<Teacher[]> => {
       if (Array.isArray(data)) {
         return data.filter((item) => item !== null); // Фільтруємо null елементи
       }
+
       // Якщо дані у вигляді об'єкта з ключами
       const teachers = Object.entries(data).map(([id, teacher]) => ({
         id,
         ...(teacher as Teacher),
       }));
-
       return teachers;
     }
 
+    // Якщо даних немає, повертаємо порожній масив
     return [];
   } catch (error) {
     console.error("Error fetching teachers:", error);
