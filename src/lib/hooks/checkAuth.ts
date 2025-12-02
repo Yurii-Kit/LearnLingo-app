@@ -5,10 +5,12 @@ import { auth } from "../../firebase/firebase";
 import { useAuthStore } from "../store/authStore";
 
 export const useCheckAuth = () => {
+  const user = useAuthStore((state) => state.user);
   const setUser = useAuthStore((state) => state.setUser);
   const setIsLoading = useAuthStore((state) => state.setIsLoading);
 
   useEffect(() => {
+    if (user !== undefined) return; // користувач вже відомий, не запускаємо лоадер
     setIsLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -26,5 +28,5 @@ export const useCheckAuth = () => {
     });
 
     return () => unsubscribe();
-  }, [setUser, setIsLoading]);
+  }, [setUser, setIsLoading, user]);
 };

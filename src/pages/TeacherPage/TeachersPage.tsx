@@ -44,6 +44,9 @@ export default function TeachersPage() {
 
   // Початкове завантаження вчителів та опцій фільтрів
   useEffect(() => {
+    // Якщо дані вже є, не завантажувати знову
+    if (teachers.length > 0 || isLoading) return;
+
     const loadInitialData = async () => {
       try {
         setIsLoading(true);
@@ -72,7 +75,6 @@ export default function TeachersPage() {
 
         // Зберегти вчителів у store
         setTeachers(allTeachers);
-        setIsLoading(false);
       } catch (error) {
         setIsError(true);
       } finally {
@@ -81,7 +83,7 @@ export default function TeachersPage() {
     };
 
     loadInitialData();
-  }, []);
+  }, [teachers.length, isLoading]);
 
   // Фільтрація вчителів
   useEffect(() => {
@@ -115,7 +117,7 @@ export default function TeachersPage() {
     setVisibleCount((prev) => prev + 4);
   };
 
-  if (isLoading) {
+  if (isLoading && teachers.length === 0) {
     return <LoaderOverlay />;
   }
 
