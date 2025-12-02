@@ -1,6 +1,6 @@
 {
   "teachers": {
-    "teacher_1": {
+    "teacher_01": {
       "name": "John",
       "surname": "Doe",
       "languages": ["English", "Spanish"],
@@ -35,7 +35,7 @@
       },
       "experience": "John has been teaching languages for 7 years and has extensive experience in helping students improve their language skills. He has successfully taught numerous students from different backgrounds and proficiency levels."
     },
-    "teacher_2": {
+    "teacher_02": {
       "name": "Jane",
       "surname": "Smith",
       "languages": ["French", "German"],
@@ -68,7 +68,7 @@
       },
       "experience": "Jane is an experienced and dedicated language teacher specializing in German and French. She holds a Bachelor's degree in German Studies and a Master's degree in French Literature. Her passion for languages and teaching has driven her to become a highly proficient and knowledgeable instructor. With over 10 years of teaching experience, Jane has helped numerous students of various backgrounds and proficiency levels achieve their language learning goals. She is skilled at adapting her teaching methods to suit the needs and learning styles of her students, ensuring that they feel supported and motivated throughout their language journey."
     },
-    "teacher_3": {
+    "teacher_03": {
       "name": "David",
       "surname": "Johnson",
       "languages": ["Mandarin Chinese"],
@@ -96,7 +96,7 @@
       },
       "experience": "David has been teaching Mandarin Chinese for 4 years. He has a passion for language teaching and is dedicated to helping his students succeed. With a solid understanding of the language and culture, David ensures that his lessons are both informative and enjoyable."
     },
-    "teacher_4": {
+    "teacher_04": {
       "name": "Sarah",
       "surname": "Johnson",
       "languages": ["English"],
@@ -124,7 +124,7 @@
       },
       "experience": "Sarah has been teaching English for 6 years. She has worked with students from diverse backgrounds and understands the challenges they face while learning a new language. Her teaching approach emphasizes practical communication skills and ensures a supportive and engaging learning environment."
     },
-    "teacher_5": {
+    "teacher_05": {
       "name": "Michael",
       "surname": "Brown",
       "languages": ["Spanish"],
@@ -157,7 +157,7 @@
       },
       "experience": "Michael has been teaching Spanish for 5 years. He has a deep understanding of the language and culture, which he incorporates into his lessons. Michael's teaching style is interactive and dynamic, fostering an enjoyable learning experience while helping students achieve their language goals."
     },
-    "teacher_6": {
+    "teacher_06": {
       "name": "Emma",
       "surname": "Wilson",
       "languages": ["French", "Italian"],
@@ -185,7 +185,7 @@
       },
       "experience": "Emma has been teaching French and Italian for 8 years. She has a strong background in language education and a passion for helping students succeed. Emma's teaching approach is student-centered, incorporating interactive activities and authentic materials to create a dynamic and immersive learning environment."
     },
-    "teacher_7": {
+    "teacher_07": {
       "name": "Alexander",
       "surname": "Lee",
       "languages": ["English", "Korean"],
@@ -213,7 +213,7 @@
       },
       "experience": "Alexander has been teaching English and Korean for 5 years. He has a strong background in language education and has successfully helped numerous students improve their language proficiency. Alexander's teaching style is student-centered, and he creates a supportive and engaging learning environment to maximize his students' language learning potential."
     },
-    "teacher_8": {
+    "teacher_08": {
       "name": "Sophia",
       "surname": "Garcia",
       "languages": ["Spanish", "French"],
@@ -246,7 +246,7 @@
       },
       "experience": "Sophia has been teaching Spanish and French for 7 years. She has extensive experience in language instruction and is dedicated to helping her students achieve their language goals. Sophia's lessons are designed to be interactive and enjoyable, fostering a love for languages while developing strong language skills."
     },
-    "teacher_9": {
+    "teacher_09": {
       "name": "Max",
       "surname": "Andersen",
       "languages": ["German"],

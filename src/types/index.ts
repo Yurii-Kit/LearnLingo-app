@@ -1,29 +1,4 @@
 // ============================================
-// Firebase Database Types (як зберігається в БД)
-// ============================================
-
-export interface ReviewDB {
-  reviewer_name: string;
-  reviewer_rating: number;
-  comment: string;
-}
-
-export interface TeacherDB {
-  name: string;
-  surname: string;
-  languages: string[];
-  levels: string[];
-  rating: number;
-  reviews: { [key: string]: ReviewDB }; // Об'єкт з ключами
-  price_per_hour: number;
-  lessons_done: number;
-  avatar_url: string;
-  lesson_info: string;
-  conditions: { [key: string]: string }; // Об'єкт з ключами
-  experience: string;
-}
-
-// ============================================
 // Teacher & Reviews Types
 // ============================================
 
@@ -75,14 +50,6 @@ export interface TeachersState {
   setIsLoading: (isLoading: boolean) => void;
   isError?: boolean;
   setIsError: (isError: boolean) => void;
-
-  // стани для пагінації
-  lastKey: string | null;
-  setLastKey: (key: string | null) => void;
-  hasMore: boolean;
-  setHasMore: (hasMore: boolean) => void;
-  isLoadingMore: boolean;
-  setIsLoadingMore: (isLoading: boolean) => void;
 }
 // Options Store Types
 export interface LanguageOption {
@@ -174,7 +141,7 @@ export interface SelectorFieldProps {
 
 // Teacher List Props
 export interface TeacherListProps {
-  filteredTeachers: Teacher[];
+  visibleTeachers: Teacher[];
 }
 
 // Teacher Card Props

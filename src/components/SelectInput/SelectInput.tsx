@@ -110,8 +110,11 @@ export default function SelectInput({
 
   return (
     <div className={css.wrapper}>
-      <label className={css.label}>{label}</label>
+      <label htmlFor={label} className={css.label}>
+        {label}
+      </label>
       <Select
+        inputId={label}
         styles={customStyles}
         options={options}
         defaultValue={defaultValue}

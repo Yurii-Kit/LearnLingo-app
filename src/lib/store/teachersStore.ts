@@ -10,14 +10,4 @@ export const useTeachersStore = create<TeachersState>((set) => ({
 
   isError: false,
   setIsError: (isError: boolean) => set({ isError }),
-
-  //стани для пагінації
-  lastKey: null,
-  setLastKey: (key: string | null) => set({ lastKey: key }),
-
-  hasMore: true,
-  setHasMore: (hasMore: boolean) => set({ hasMore }),
-
-  isLoadingMore: false,
-  setIsLoadingMore: (isLoading: boolean) => set({ isLoadingMore: isLoading }),
 }));
