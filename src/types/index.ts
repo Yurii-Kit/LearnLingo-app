@@ -67,7 +67,6 @@ export interface AuthState {
   clearUser: () => void;
   setIsLoading: (state: boolean) => void;
 }
-
 // Teachers Store Types
 export interface TeachersState {
   teachers: Teacher[];
@@ -76,8 +75,15 @@ export interface TeachersState {
   setIsLoading: (isLoading: boolean) => void;
   isError?: boolean;
   setIsError: (isError: boolean) => void;
-}
 
+  // стани для пагінації
+  lastKey: string | null;
+  setLastKey: (key: string | null) => void;
+  hasMore: boolean;
+  setHasMore: (hasMore: boolean) => void;
+  isLoadingMore: boolean;
+  setIsLoadingMore: (isLoading: boolean) => void;
+}
 // Options Store Types
 export interface LanguageOption {
   label: string;

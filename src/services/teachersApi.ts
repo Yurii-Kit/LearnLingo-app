@@ -1,4 +1,11 @@
-import { ref, get } from "firebase/database";
+import {
+  ref,
+  get,
+  query,
+  limitToFirst,
+  startAfter,
+  orderByKey,
+} from "firebase/database";
 import { db } from "../firebase/firebase";
 import type { Teacher, TeacherDB } from "../types";
 
@@ -19,6 +26,62 @@ export const mapTeacherFromDB = (id: string, teacherDB: TeacherDB): Teacher => {
     conditions: teacherDB.conditions ? Object.values(teacherDB.conditions) : [],
     experience: teacherDB.experience,
   };
+};
+
+// Функція для отримання вчителів з пагінацією
+export const fetchTeachersPaginated = async (
+  pageSize: number = 4,
+  lastKey?: string
+): Promise<{ teachers: Teacher[]; lastKey: string | null }> => {
+  try {
+    const teachersRef = ref(db, "teachers");
+
+    let teachersQuery;
+
+    if (lastKey) {
+      // Якщо є lastKey — завантажуємо НАСТУПНУ порцію (після цього ключа)
+      teachersQuery = query(
+        teachersRef,
+        orderByKey(), // Сортуємо за ID
+        startAfter(lastKey), // Починаємо ПІСЛЯ останнього завантаженого ключа
+        limitToFirst(pageSize) // Беремо тільки pageSize елементів (наприклад, 4)
+      );
+    } else {
+      // Якщо немає lastKey — це ПЕРША сторінка
+      teachersQuery = query(
+        teachersRef,
+        orderByKey(),
+        limitToFirst(pageSize) // Беремо перші 4 елементи
+      );
+    }
+
+    const snapshot = await get(teachersQuery);
+
+    if (!snapshot.exists()) {
+      return { teachers: [], lastKey: null };
+    }
+
+    const data = snapshot.val() as { [key: string]: TeacherDB };
+
+    // Перетворюємо об'єкт в масив вчителів
+    const teachers = Object.entries(data).map(([id, teacherDB]) =>
+      mapTeacherFromDB(id, teacherDB)
+    );
+
+    // Зберігаємо ОСТАННІЙ ключ для наступного запиту
+    const keys = Object.keys(data);
+    const newLastKey = keys.length > 0 ? keys[keys.length - 1] : null;
+    console.log("Fetched teachers with pagination:", teachers);
+    console.log(`Fetched ${teachers.length} teachers, lastKey: ${newLastKey}`);
+
+    return {
+      teachers, // Масив вчителів
+      lastKey: newLastKey, // Ключ для наступної порції
+    };
+  } catch (error) {
+    console.error("Error fetching teachers:", error);
+    throw error;
+  }
 };
 
 // Функція для отримання списку вчителів з Firebase Realtime Database
