@@ -1,4 +1,29 @@
 // ============================================
+// Firebase Database Types (як зберігається в БД)
+// ============================================
+
+export interface ReviewDB {
+  reviewer_name: string;
+  reviewer_rating: number;
+  comment: string;
+}
+
+export interface TeacherDB {
+  name: string;
+  surname: string;
+  languages: string[];
+  levels: string[];
+  rating: number;
+  reviews: { [key: string]: ReviewDB }; // Об'єкт з ключами
+  price_per_hour: number;
+  lessons_done: number;
+  avatar_url: string;
+  lesson_info: string;
+  conditions: { [key: string]: string }; // Об'єкт з ключами
+  experience: string;
+}
+
+// ============================================
 // Teacher & Reviews Types
 // ============================================
 
@@ -9,18 +34,18 @@ export interface Review {
 }
 
 export interface Teacher {
-  id?: string;
+  id: string; // обов'язкове після завантаження
   name: string;
   surname: string;
   languages: string[];
   levels: string[];
   rating: number;
-  reviews: Review[];
+  reviews: Review[]; // Масив
   price_per_hour: number;
   lessons_done: number;
   avatar_url: string;
   lesson_info: string;
-  conditions: string[];
+  conditions: string[]; // Масив
   experience: string;
 }
 

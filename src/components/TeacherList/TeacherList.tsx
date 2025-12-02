@@ -10,8 +10,8 @@ export default function TeacherList({ filteredTeachers }: TeacherListProps) {
           No teachers found with selected filters.
         </p>
       ) : (
-        filteredTeachers.map((teacher, index) => (
-          <TeacherCard key={index} teacher={teacher} />
+        filteredTeachers.map((teacher) => (
+          <TeacherCard key={teacher.id} teacher={teacher} />
         ))
       )}
     </section>

@@ -1,40 +1,46 @@
 import { ref, get } from "firebase/database";
 import { db } from "../firebase/firebase";
-import type { Teacher } from "../types";
+import type { Teacher, TeacherDB } from "../types";
+
+// Функція для мапінгу даних вчителя з формату бази даних до формату застосунку
+export const mapTeacherFromDB = (id: string, teacherDB: TeacherDB): Teacher => {
+  return {
+    id,
+    name: teacherDB.name,
+    surname: teacherDB.surname,
+    languages: teacherDB.languages,
+    levels: teacherDB.levels,
+    rating: teacherDB.rating,
+    reviews: teacherDB.reviews ? Object.values(teacherDB.reviews) : [],
+    price_per_hour: teacherDB.price_per_hour,
+    lessons_done: teacherDB.lessons_done,
+    avatar_url: teacherDB.avatar_url,
+    lesson_info: teacherDB.lesson_info,
+    conditions: teacherDB.conditions ? Object.values(teacherDB.conditions) : [],
+    experience: teacherDB.experience,
+  };
+};
 
 // Функція для отримання списку вчителів з Firebase Realtime Database
 export const fetchTeachers = async (): Promise<Teacher[]> => {
   try {
     const teachersRef = ref(db, "teachers");
-
     const snapshot = await get(teachersRef);
 
-    if (snapshot.exists()) {
-      const data = snapshot.val();
-      console.log(data);
-
-      // Якщо дані у вигляді масиву
-      if (Array.isArray(data)) {
-        return data.filter((item) => item !== null); // Фільтруємо null елементи
-      }
-
-      // Якщо дані у вигляді об'єкта з ключами
-      const teachers = Object.entries(data).map(([id, teacher]) => ({
-        id,
-        ...(teacher as Teacher),
-      }));
-      return teachers;
+    if (!snapshot.exists()) {
+      return [];
     }
 
-    // Якщо даних немає, повертаємо порожній масив
-    return [];
+    const data = snapshot.val() as { [key: string]: TeacherDB };
+
+    const teachers = Object.entries(data).map(([id, teacherDB]) =>
+      mapTeacherFromDB(id, teacherDB)
+    );
+    console.log("Fetched teachers:", teachers);
+
+    return teachers;
   } catch (error) {
     console.error("Error fetching teachers:", error);
-    console.error("Error details:", {
-      message: error instanceof Error ? error.message : "Unknown error",
-      code: (error as any)?.code,
-      stack: error instanceof Error ? error.stack : undefined,
-    });
     throw error;
   }
 };
