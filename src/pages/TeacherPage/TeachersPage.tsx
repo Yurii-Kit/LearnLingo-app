@@ -131,9 +131,9 @@ export default function TeachersPage() {
     setVisibleCount((prev) => prev + 4);
   };
 
-  // if (isLoading) {
-  //   return <LoaderOverlay />;
-  // }
+  if (isLoading) {
+    return <p>......</p>;
+  }
 
   if (isError) {
     return (
@@ -158,7 +158,7 @@ export default function TeachersPage() {
           setSelectedLevel={setSelectedLevel}
           setSelectedPrice={setSelectedPrice}
         />
-        <TeacherList visibleTeachers={visibleTeachers} />
+        <TeacherList visibleTeachers={visibleTeachers} isLoading={isLoading} />
         {visibleCount < filteredTeachers.length && (
           <button className={css.loadMoreBtn} onClick={handleLoadMore}>
             Load more

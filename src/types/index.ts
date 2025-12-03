@@ -172,6 +172,7 @@ export interface SelectorFieldProps {
 // Teacher List Props
 export interface TeacherListProps {
   visibleTeachers: Teacher[];
+  isLoading?: boolean;
 }
 
 // Teacher Card Props

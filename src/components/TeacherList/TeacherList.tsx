@@ -1,5 +1,6 @@
 import TeacherCard from "../TeacherCard/TeacherCard";
 import type { TeacherListProps } from "../../types";
+
 import css from "./TeacherList.module.css";
 
 export default function TeacherList({ visibleTeachers }: TeacherListProps) {
