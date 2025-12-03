@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import css from "./TeachersPage.module.css";
 import Container from "../../components/Container/Container";
 import SelectorField from "../../components/SelectorField/SelectorField";
@@ -37,7 +37,6 @@ export default function TeachersPage() {
 
   const [filteredTeachers, setFilteredTeachers] = useState<Teacher[]>([]);
   const [visibleCount, setVisibleCount] = useState(4);
-
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
   const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
   const [selectedPrice, setSelectedPrice] = useState<string | null>(null);
@@ -110,7 +109,15 @@ export default function TeachersPage() {
     setFilteredTeachers(filtered);
   }, [selectedLanguage, selectedLevel, selectedPrice, teachers]);
 
-  const visibleTeachers = filteredTeachers.slice(0, visibleCount);
+  // Скидання visibleCount після фільтрації
+  useEffect(() => {
+    setVisibleCount(4);
+  }, [filteredTeachers]);
+
+  const visibleTeachers = useMemo(
+    () => filteredTeachers.slice(0, visibleCount),
+    [filteredTeachers, visibleCount]
+  );
 
   // Функція для завантаження наступної порції вчителів
   const handleLoadMore = () => {

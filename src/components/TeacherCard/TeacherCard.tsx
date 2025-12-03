@@ -2,9 +2,25 @@ import { useState } from "react";
 import type { TeacherCardProps } from "../../types";
 import css from "./TeacherCard.module.css";
 import Icon from "../Icon/Icon";
+import { useAuthStore } from "../../lib/store/authStore";
+
+import ModalWindow from "../ModalWindow/ModalWindow";
+import { Link } from "react-router-dom";
+import ModalRequared from "../ModalRequared/ModalRequared";
 
 export default function TeacherCard({ teacher }: TeacherCardProps) {
   const [showMore, setShowMore] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const { isLoggedIn } = useAuthStore();
+
+  const handleToggleFavorite = () => {
+    if (!isLoggedIn) {
+      setIsOpenModal(true);
+      return;
+    } else {
+      console.log("Toggled favorite for teacher:", teacher.id);
+    }
+  };
 
   return (
     <div className={css.card}>
@@ -64,7 +80,11 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
                   </p>
                 </li>
               </ul>
-              <button type="button" className={css.favoriteBtn}>
+              <button
+                type="button"
+                className={css.favoriteBtn}
+                onClick={handleToggleFavorite}
+              >
                 <Icon
                   name="heart"
                   width={26}
@@ -150,6 +170,7 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
           </button>
         )}
       </div>
+      {isOpenModal && <ModalRequared onClose={() => setIsOpenModal(false)} />}
     </div>
   );
 }

@@ -66,6 +66,8 @@ export interface AuthState {
   setUser: (user: User | null) => void;
   clearUser: () => void;
   setIsLoading: (state: boolean) => void;
+  isLoggedIn: boolean;
+  setIsLoggedIn: (state: boolean) => void;
 }
 // Teachers Store Types
 export interface TeachersState {
@@ -129,6 +131,9 @@ export interface ModalRegisterProps {
   onClose: () => void;
 }
 
+export interface ModalRequaredProps {
+  onClose: () => void;
+}
 // Form Input Types
 export interface LoginFormInputs {
   email: string;

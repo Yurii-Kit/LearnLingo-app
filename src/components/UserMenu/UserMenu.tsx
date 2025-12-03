@@ -9,7 +9,7 @@ export default function UserMenu() {
 
   const handleLogOut = async () => {
     try {
-      await signOut(auth); // 1Вихід з Firebase
+      await signOut(auth); // Вихід з Firebase
       clearUser(); //  Очистка глобального стану
     } catch (error) {
       console.error("Logout error:", error);

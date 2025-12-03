@@ -26,6 +26,7 @@ export default function ModalLogin({ onClose }: ModalLoginProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const setUser = useAuthStore((state) => state.setUser);
+  const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
 
   // 3. Ініціалізація хука форми
   const {
@@ -55,6 +56,7 @@ export default function ModalLogin({ onClose }: ModalLoginProps) {
         email: user.email,
         name: user.displayName,
       });
+      setIsLoggedIn(true);
       console.log("GLOBAL USER:", useAuthStore.getState().user);
       reset(); // Очищення форми
       onClose();
