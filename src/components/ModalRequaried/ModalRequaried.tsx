@@ -2,11 +2,11 @@ import { useState } from "react";
 import ModalWindow from "../ModalWindow/ModalWindow";
 import ModalLogin from "../ModalLogin/ModalLogin";
 import ModalRegister from "../ModalRegister/ModalRegister";
-import type { ModalRequaredProps } from "../../types";
+import type { ModalRequariedProps } from "../../types";
 
-import css from "./Modalrequared.module.css";
+import css from "./Modalrequaried.module.css";
 
-export default function ModalRequared({ onClose }: ModalRequaredProps) {
+export default function ModalRequaried({ onClose }: ModalRequariedProps) {
   const [modalType, setModalType] = useState<"login" | "register" | null>(null);
 
   // Коли обрано логін/реєстрацію — показуємо відповідну модалку замість цієї

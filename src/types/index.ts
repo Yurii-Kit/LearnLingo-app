@@ -61,9 +61,9 @@ export interface User {
 }
 
 export interface AuthState {
-  user: User | null;
+  user: User | undefined | null;
   isLoading?: boolean;
-  setUser: (user: User | null) => void;
+  setUser: (user: User | undefined | null) => void;
   clearUser: () => void;
   setIsLoading: (state: boolean) => void;
   isLoggedIn: boolean;
@@ -131,7 +131,7 @@ export interface ModalRegisterProps {
   onClose: () => void;
 }
 
-export interface ModalRequaredProps {
+export interface ModalRequariedProps {
   onClose: () => void;
 }
 // Form Input Types

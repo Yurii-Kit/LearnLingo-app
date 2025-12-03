@@ -9,7 +9,7 @@ import { auth } from "../../firebase/firebase";
 import css from "./ModalLogin.module.css";
 import type { ModalLoginProps, LoginFormInputs } from "../../types";
 import { useAuthStore } from "../../lib/store/authStore";
-import { toast } from "react-hot-toast/headless";
+import { toast } from "react-hot-toast";
 
 // 2. Схема валидації з Yup
 const loginSchema = Yup.object().shape({

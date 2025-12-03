@@ -3,10 +3,7 @@ import type { TeacherCardProps } from "../../types";
 import css from "./TeacherCard.module.css";
 import Icon from "../Icon/Icon";
 import { useAuthStore } from "../../lib/store/authStore";
-
-import ModalWindow from "../ModalWindow/ModalWindow";
-import { Link } from "react-router-dom";
-import ModalRequared from "../ModalRequared/ModalRequared";
+import ModalRequaried from "../ModalRequaried/ModalRequaried";
 
 export default function TeacherCard({ teacher }: TeacherCardProps) {
   const [showMore, setShowMore] = useState(false);
@@ -170,7 +167,7 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
           </button>
         )}
       </div>
-      {isOpenModal && <ModalRequared onClose={() => setIsOpenModal(false)} />}
+      {isOpenModal && <ModalRequaried onClose={() => setIsOpenModal(false)} />}
     </div>
   );
 }

@@ -13,8 +13,12 @@ import {
 } from "../../services/teachersApi";
 import { useTeachersStore } from "../../lib/store/teachersStore";
 import { useOptionsStore } from "../../lib/store/optionsStore";
+import { useAuthStore } from "../../lib/store/authStore";
 
 export default function TeachersPage() {
+  // AuthStore
+  const isAuthLoading = useAuthStore((state) => state.isLoading);
+
   // TeachersStore
   const {
     teachers,
@@ -43,13 +47,15 @@ export default function TeachersPage() {
 
   // Початкове завантаження вчителів та опцій фільтрів
   useEffect(() => {
+    // Чекати поки завершиться завантаження аутентифікації
+    if (isAuthLoading) return;
+
     // Якщо дані вже є, не завантажувати знову
     if (teachers.length > 0 || isLoading) return;
 
     const loadInitialData = async () => {
       try {
         setIsLoading(true);
-
         //  1. Завантажити ВСІ вчителі для створення опцій фільтрів
         const allTeachers = await fetchTeachers();
 
@@ -82,7 +88,7 @@ export default function TeachersPage() {
     };
 
     loadInitialData();
-  }, [teachers.length, isLoading]);
+  }, [teachers.length, isLoading, isAuthLoading]);
 
   // Фільтрація вчителів
   useEffect(() => {
@@ -114,6 +120,7 @@ export default function TeachersPage() {
     setVisibleCount(4);
   }, [filteredTeachers]);
 
+  // Вчителі, які будуть видимі на сторінці
   const visibleTeachers = useMemo(
     () => filteredTeachers.slice(0, visibleCount),
     [filteredTeachers, visibleCount]
@@ -124,9 +131,9 @@ export default function TeachersPage() {
     setVisibleCount((prev) => prev + 4);
   };
 
-  if (isLoading && teachers.length === 0) {
-    return <LoaderOverlay />;
-  }
+  // if (isLoading) {
+  //   return <LoaderOverlay />;
+  // }
 
   if (isError) {
     return (
