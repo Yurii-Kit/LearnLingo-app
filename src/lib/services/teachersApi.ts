@@ -1,6 +1,6 @@
 import { ref, get } from "firebase/database";
-import { db } from "../firebase/firebase";
-import type { Teacher, TeacherDB } from "../types";
+import { db } from "../../firebase/firebase";
+import type { Teacher, TeacherDB } from "../../types";
 
 // Функція для мапінгу даних вчителя з формату бази даних до формату застосунку
 export const mapTeacherFromDB = (id: string, teacherDB: TeacherDB): Teacher => {

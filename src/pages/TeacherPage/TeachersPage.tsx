@@ -3,21 +3,26 @@ import css from "./TeachersPage.module.css";
 import Container from "../../components/Container/Container";
 import SelectorField from "../../components/SelectorField/SelectorField";
 import TeacherList from "../../components/TeacherList/TeacherList";
-import LoaderOverlay from "../../components/LoaderOverlay/LoaderOverlay";
+// import LoaderOverlay from "../../components/LoaderOverlay/LoaderOverlay";
 import type { Teacher } from "../../types";
 import {
   fetchTeachers,
   getUniqueLanguages,
   getUniqueLevels,
   getPriceRange,
-} from "../../services/teachersApi";
+} from "../../lib/services/teachersApi";
 import { useTeachersStore } from "../../lib/store/teachersStore";
 import { useOptionsStore } from "../../lib/store/optionsStore";
 import { useAuthStore } from "../../lib/store/authStore";
 
 export default function TeachersPage() {
   // AuthStore
-  const isAuthLoading = useAuthStore((state) => state.isLoading);
+  const {
+    isLoading: isAuthLoading,
+    isLoggedIn,
+    fetchFavorites,
+    favorites,
+  } = useAuthStore();
 
   // TeachersStore
   const {
@@ -89,6 +94,13 @@ export default function TeachersPage() {
 
     loadInitialData();
   }, [teachers.length, isLoading, isAuthLoading]);
+
+  //Завантаження улюблених вчителів
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchFavorites();
+    }
+  }, [isLoggedIn]);
 
   // Фільтрація вчителів
   useEffect(() => {

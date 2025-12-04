@@ -63,11 +63,15 @@ export interface User {
 export interface AuthState {
   user: User | undefined | null;
   isLoading?: boolean;
+  isLoggedIn: boolean;
+  favorites: string[];
   setUser: (user: User | undefined | null) => void;
   clearUser: () => void;
   setIsLoading: (state: boolean) => void;
-  isLoggedIn: boolean;
   setIsLoggedIn: (state: boolean) => void;
+  fetchFavorites: () => void;
+  addFavorite: (teacherId: string) => Promise<void>;
+  removeFavorite: (teacherId: string) => Promise<void>;
 }
 // Teachers Store Types
 export interface TeachersState {

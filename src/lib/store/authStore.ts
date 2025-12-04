@@ -1,12 +1,44 @@
 import { create } from "zustand";
 import type { AuthState } from "../../types";
+import { FavoriteService } from "../services/favoritesService";
 
-export const useAuthStore = create<AuthState>((set) => ({
+export const useAuthStore = create<AuthState>((set, get) => ({
   user: undefined,
   isLoading: true,
   isLoggedIn: false,
+  favorites: [],
   setUser: (user) => set({ user }),
-  clearUser: () => set({ user: undefined, isLoggedIn: false }),
+  clearUser: () => set({ user: undefined, isLoggedIn: false, favorites: [] }),
   setIsLoading: (value) => set({ isLoading: value }),
   setIsLoggedIn: (value) => set({ isLoggedIn: value }),
+
+  fetchFavorites: () => {
+    const user = get().user;
+    if (!user) return;
+    FavoriteService.fetchFavorites(user.uid, (favorites) => {
+      set({ favorites });
+    });
+  },
+
+  addFavorite: async (teacherId: string) => {
+    const user = get().user;
+    if (!user) return;
+
+    await FavoriteService.addFavorite(user.uid, teacherId);
+
+    set((state) => ({
+      favorites: [...state.favorites, teacherId],
+    }));
+  },
+
+  removeFavorite: async (teacherId: string) => {
+    const user = get().user;
+    if (!user) return;
+
+    await FavoriteService.removeFavorite(user.uid, teacherId);
+
+    set((state) => ({
+      favorites: state.favorites.filter((id) => id !== teacherId),
+    }));
+  },
 }));

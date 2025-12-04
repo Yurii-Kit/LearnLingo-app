@@ -144,6 +144,11 @@
     stroke: #121417;
 }
 
+.heartActive {
+    stroke: #ff0000;
+    fill: #ff0000;
+}
+
 .heart:hover {
     scale: 1.1;
 }

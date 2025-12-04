@@ -8,15 +8,15 @@ import ModalRequaried from "../ModalRequaried/ModalRequaried";
 export default function TeacherCard({ teacher }: TeacherCardProps) {
   const [showMore, setShowMore] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const { isLoggedIn } = useAuthStore();
+  const { favorites, addFavorite, removeFavorite, isLoggedIn } = useAuthStore();
 
+  const isFavorite = favorites.includes(teacher.id);
   const handleToggleFavorite = () => {
     if (!isLoggedIn) {
       setIsOpenModal(true);
       return;
-    } else {
-      console.log("Toggled favorite for teacher:", teacher.id);
     }
+    isFavorite ? removeFavorite(teacher.id) : addFavorite(teacher.id);
   };
 
   return (
@@ -86,7 +86,7 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
                   name="heart"
                   width={26}
                   height={26}
-                  className={css.heart}
+                  className={isFavorite ? css.heartActive : css.heart}
                 />
               </button>
             </div>
