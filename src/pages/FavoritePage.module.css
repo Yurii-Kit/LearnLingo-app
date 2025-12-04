@@ -1,0 +1,51 @@
+.filtersContainer {
+    background-color: inherit;
+    padding: 0 128px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.favoritePage {
+    background: #f8f8f8;
+    padding: 32px 0;
+    min-height: calc(100vh - 100px);
+}
+
+.error {
+    text-align: center;
+    color: #e74c3c;
+    font-size: 18px;
+    padding: 32px;
+}
+
+.noResults {
+    text-align: center;
+    color: #8a8a89;
+    font-size: 18px;
+    padding: 32px;
+}
+
+.loadMoreBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 0px;
+    border-radius: 12px;
+    padding-block: 16px;
+    padding-inline: 48px;
+    width: 183px;
+    height: 60px;
+    background: #f4c550;
+    margin: 0 auto;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.55556;
+    color: #121417;
+}
+
+.loadMoreBtn:hover {
+    background: #f0bd3e;
+}

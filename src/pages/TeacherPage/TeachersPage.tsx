@@ -13,6 +13,7 @@ import {
 import { useTeachersStore } from "../../lib/store/teachersStore";
 import { useOptionsStore } from "../../lib/store/optionsStore";
 import { useAuthStore } from "../../lib/store/authStore";
+import LoaderOverlay from "../../components/LoaderOverlay/LoaderOverlay";
 
 export default function TeachersPage() {
   console.log("👨‍🏫 [TEACHERS PAGE] TeachersPage монтується");
@@ -165,9 +166,8 @@ export default function TeachersPage() {
   };
 
   if (isLoading) {
-    return <p>......</p>;
+    return <LoaderOverlay />;
   }
-
   if (isError) {
     return (
       <section className={css.teachersPage}>
