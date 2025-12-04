@@ -5,6 +5,8 @@ import "modern-normalize";
 import "./index.css";
 import App from "./components/App/App";
 
+console.log("🚀 [MAIN] Початок монтування додатку");
+
 createRoot(document.getElementById("root") as HTMLDivElement).render(
   <StrictMode>
     <BrowserRouter>
@@ -12,3 +14,5 @@ createRoot(document.getElementById("root") as HTMLDivElement).render(
     </BrowserRouter>
   </StrictMode>
 );
+
+console.log("✅ [MAIN] Додаток змонтовано");

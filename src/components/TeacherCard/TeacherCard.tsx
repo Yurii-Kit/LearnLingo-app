@@ -4,6 +4,7 @@ import css from "./TeacherCard.module.css";
 import Icon from "../Icon/Icon";
 import { useAuthStore } from "../../lib/store/authStore";
 import ModalRequaried from "../ModalRequaried/ModalRequaried";
+import { clsx } from "clsx";
 
 export default function TeacherCard({ teacher }: TeacherCardProps) {
   const [showMore, setShowMore] = useState(false);
@@ -86,7 +87,7 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
                   name="heart"
                   width={26}
                   height={26}
-                  className={isFavorite ? css.heartActive : css.heart}
+                  className={clsx(css.heart, { [css.heartActive]: isFavorite })}
                 />
               </button>
             </div>

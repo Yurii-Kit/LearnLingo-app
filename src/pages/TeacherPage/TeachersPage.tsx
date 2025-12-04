@@ -1,10 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import css from "./TeachersPage.module.css";
 import Container from "../../components/Container/Container";
 import SelectorField from "../../components/SelectorField/SelectorField";
 import TeacherList from "../../components/TeacherList/TeacherList";
 // import LoaderOverlay from "../../components/LoaderOverlay/LoaderOverlay";
-import type { Teacher } from "../../types";
 import {
   fetchTeachers,
   getUniqueLanguages,
@@ -16,66 +15,84 @@ import { useOptionsStore } from "../../lib/store/optionsStore";
 import { useAuthStore } from "../../lib/store/authStore";
 
 export default function TeachersPage() {
-  // AuthStore
-  const {
-    isLoading: isAuthLoading,
-    isLoggedIn,
-    fetchFavorites,
-  } = useAuthStore();
+  console.log("👨‍🏫 [TEACHERS PAGE] TeachersPage монтується");
 
-  // TeachersStore
-  const {
-    teachers,
-    setTeachers,
-    isLoading,
-    setIsLoading,
-    isError,
-    setIsError,
-  } = useTeachersStore();
+  // AuthStore - використовуємо окремі селектори
+  const isAuthLoading = useAuthStore((state) => state.isLoading);
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
 
-  // OptionsStore
-  const {
-    languageOptions,
-    setLanguageOptions,
-    levelOptions,
-    setLevelOptions,
-    priceOptions,
-    setPriceOptions,
-  } = useOptionsStore();
+  console.log(
+    "👨‍🏫 [TEACHERS PAGE] isAuthLoading:",
+    isAuthLoading,
+    "isLoggedIn:",
+    isLoggedIn
+  );
 
-  const [filteredTeachers, setFilteredTeachers] = useState<Teacher[]>([]);
+  // TeachersStore - використовуємо окремі селектори
+  const teachers = useTeachersStore((state) => state.teachers);
+  const isLoading = useTeachersStore((state) => state.isLoading);
+  const isError = useTeachersStore((state) => state.isError);
+
+  // OptionsStore - використовуємо окремі селектори
+  const languageOptions = useOptionsStore((state) => state.languageOptions);
+  const levelOptions = useOptionsStore((state) => state.levelOptions);
+  const priceOptions = useOptionsStore((state) => state.priceOptions);
+
   const [visibleCount, setVisibleCount] = useState(4);
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
   const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
   const [selectedPrice, setSelectedPrice] = useState<string | null>(null);
 
+  // Використовуємо ref для відслідковування чи дані вже завантажені
+  const hasLoadedRef = useRef(false);
+
   // Початкове завантаження вчителів та опцій фільтрів
   useEffect(() => {
+    console.log("📚 [TEACHERS PAGE] useEffect - початкове завантаження");
+    console.log(
+      "📚 [TEACHERS PAGE] isAuthLoading:",
+      isAuthLoading,
+      "hasLoadedRef.current:",
+      hasLoadedRef.current
+    );
+
     // Чекати поки завершиться завантаження аутентифікації
     if (isAuthLoading) return;
 
-    // Якщо дані вже є, не завантажувати знову
-    if (teachers.length > 0 || isLoading) return;
+    // Якщо дані вже завантажені, не завантажувати знову
+    if (hasLoadedRef.current) return;
 
     const loadInitialData = async () => {
+      hasLoadedRef.current = true; // Встановлюємо прапорець перед завантаженням
+
       try {
-        setIsLoading(true);
+        console.log("📚 [TEACHERS PAGE] Починаємо завантаження вчителів...");
+        useTeachersStore.getState().setIsLoading(true);
+
         //  1. Завантажити ВСІ вчителі для створення опцій фільтрів
         const allTeachers = await fetchTeachers();
+        console.log(
+          "📚 [TEACHERS PAGE] Завантажено вчителів:",
+          allTeachers.length
+        );
 
         // Створити опції для селектів
         const languages = getUniqueLanguages(allTeachers);
-        setLanguageOptions(
-          languages.map((lang) => ({ value: lang, label: lang }))
-        );
+        useOptionsStore
+          .getState()
+          .setLanguageOptions(
+            languages.map((lang) => ({ value: lang, label: lang }))
+          );
 
         const levels = getUniqueLevels(allTeachers);
-        setLevelOptions(
-          levels.map((level) => ({ value: level, label: level }))
-        );
+        useOptionsStore
+          .getState()
+          .setLevelOptions(
+            levels.map((level) => ({ value: level, label: level }))
+          );
 
         const prices = getPriceRange(allTeachers);
-        setPriceOptions(
+        useOptionsStore.getState().setPriceOptions(
           prices.map((price) => ({
             value: price.toString(),
             label: `${price}$`,
@@ -83,19 +100,30 @@ export default function TeachersPage() {
         );
 
         // Зберегти вчителів у store
-        setTeachers(allTeachers);
+        useTeachersStore.getState().setTeachers(allTeachers);
       } catch (error) {
-        setIsError(true);
+        useTeachersStore.getState().setIsError(true);
       } finally {
-        setIsLoading(false);
+        useTeachersStore.getState().setIsLoading(false);
       }
     };
 
     loadInitialData();
-  }, [teachers.length, isLoading, isAuthLoading]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthLoading]);
 
-  // Фільтрація вчителів
-  useEffect(() => {
+  // Фільтрація вчителів через useMemo замість useEffect
+  const filteredTeachers = useMemo(() => {
+    console.log("🔍 [TEACHERS PAGE] useMemo - фільтрація");
+    console.log(
+      "🔍 [TEACHERS PAGE] selectedLanguage:",
+      selectedLanguage,
+      "selectedLevel:",
+      selectedLevel,
+      "selectedPrice:",
+      selectedPrice
+    );
+
     let filtered = [...teachers];
 
     if (selectedLanguage) {
@@ -116,13 +144,14 @@ export default function TeachersPage() {
       );
     }
 
-    setFilteredTeachers(filtered);
+    console.log("🔍 [TEACHERS PAGE] Відфільтровано вчителів:", filtered.length);
+    return filtered;
   }, [selectedLanguage, selectedLevel, selectedPrice, teachers]);
 
-  // Скидання visibleCount після фільтрації
+  // Скидання visibleCount після зміни фільтрів
   useEffect(() => {
     setVisibleCount(4);
-  }, [filteredTeachers]);
+  }, [selectedLanguage, selectedLevel, selectedPrice]);
 
   // Вчителі, які будуть видимі на сторінці
   const visibleTeachers = useMemo(

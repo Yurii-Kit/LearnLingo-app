@@ -17,17 +17,23 @@ import { useCheckAuth } from "../../lib/hooks/checkAuth";
 import { useAuthStore } from "../../lib/store/authStore";
 
 function App() {
+  console.log("📱 [APP] Компонент App рендериться");
+
   useCheckAuth();
 
   const isLoading = useAuthStore((state) => state.isLoading);
+  console.log("📱 [APP] isLoading:", isLoading);
 
   if (isLoading) {
+    console.log("⏳ [APP] Показуємо LoaderOverlay");
     return (
       <div>
         <LoaderOverlay />
       </div>
     );
   }
+
+  console.log("📱 [APP] Рендеримо Routes");
 
   return (
     <>

@@ -5,8 +5,10 @@ import { auth } from "../../firebase/firebase";
 import { useAuthStore } from "../store/authStore";
 
 export const useCheckAuth = () => {
-  const { setUser, setIsLoggedIn, fetchFavorites, setIsLoading } =
-    useAuthStore();
+  const setUser = useAuthStore((state) => state.setUser);
+  const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
+  const setIsLoading = useAuthStore((state) => state.setIsLoading);
+  const fetchFavorites = useAuthStore((state) => state.fetchFavorites);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -33,5 +35,6 @@ export const useCheckAuth = () => {
     });
 
     return () => unsubscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
