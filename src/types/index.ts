@@ -61,15 +61,15 @@ export interface User {
 }
 
 export interface AuthState {
-  user: User | undefined | null;
+  user: User | null;
   isLoading?: boolean;
   isLoggedIn: boolean;
   favorites: string[];
-  setUser: (user: User | undefined | null) => void;
+  setUser: (user: User | null) => void;
   clearUser: () => void;
   setIsLoading: (state: boolean) => void;
   setIsLoggedIn: (state: boolean) => void;
-  fetchFavorites: () => void;
+  fetchFavorites: () => Promise<void>;
   addFavorite: (teacherId: string) => Promise<void>;
   removeFavorite: (teacherId: string) => Promise<void>;
 }

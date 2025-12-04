@@ -5,13 +5,11 @@ import { auth } from "../../firebase/firebase";
 import { useAuthStore } from "../store/authStore";
 
 export const useCheckAuth = () => {
-  // const user = useAuthStore((state) => state.user);
-  const setUser = useAuthStore((state) => state.setUser);
-  const setIsLoading = useAuthStore((state) => state.setIsLoading);
-  const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
+  const { setUser, setIsLoggedIn, fetchFavorites, setIsLoading } =
+    useAuthStore();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         // Користувач залогінений
         setUser({
@@ -20,6 +18,12 @@ export const useCheckAuth = () => {
           name: user.displayName,
         });
         setIsLoggedIn(true);
+        //Завантаження улюблених вчителів
+        try {
+          await fetchFavorites(); // чекаємо завантаження favorites
+        } catch (err) {
+          console.error("Failed to fetch favorites:", err);
+        }
       } else {
         // Користувач не залогінений
         setUser(null);

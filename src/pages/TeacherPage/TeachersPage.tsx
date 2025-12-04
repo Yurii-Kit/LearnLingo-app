@@ -21,7 +21,6 @@ export default function TeachersPage() {
     isLoading: isAuthLoading,
     isLoggedIn,
     fetchFavorites,
-    favorites,
   } = useAuthStore();
 
   // TeachersStore
@@ -94,13 +93,6 @@ export default function TeachersPage() {
 
     loadInitialData();
   }, [teachers.length, isLoading, isAuthLoading]);
-
-  //Завантаження улюблених вчителів
-  useEffect(() => {
-    if (isLoggedIn) {
-      fetchFavorites();
-    }
-  }, [isLoggedIn]);
 
   // Фільтрація вчителів
   useEffect(() => {

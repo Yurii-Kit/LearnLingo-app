@@ -3,21 +3,21 @@ import type { AuthState } from "../../types";
 import { FavoriteService } from "../services/favoritesService";
 
 export const useAuthStore = create<AuthState>((set, get) => ({
-  user: undefined,
+  user: null,
   isLoading: true,
   isLoggedIn: false,
   favorites: [],
   setUser: (user) => set({ user }),
-  clearUser: () => set({ user: undefined, isLoggedIn: false, favorites: [] }),
+  clearUser: () => set({ user: null, isLoggedIn: false, favorites: [] }),
   setIsLoading: (value) => set({ isLoading: value }),
   setIsLoggedIn: (value) => set({ isLoggedIn: value }),
 
-  fetchFavorites: () => {
+  fetchFavorites: async () => {
     const user = get().user;
     if (!user) return;
-    FavoriteService.fetchFavorites(user.uid, (favorites) => {
-      set({ favorites });
-    });
+    const favorites = await FavoriteService.fetchFavoritesOnce(user.uid);
+    set({ favorites });
+    console.log("Favorites loaded:", favorites);
   },
 
   addFavorite: async (teacherId: string) => {
