@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import { Link, NavLink } from "react-router-dom";
-import LearnLogo from "../../assets/ukraine.svg";
+// import LearnLogo from "../../assets/ukraine.svg";
 import { useAuthStore } from "../../lib/store/authStore";
 import type { ActiveLinkProps } from "../../types";
+import Icon from "../Icon/Icon";
 import css from "./Navigation.module.css";
 
 export default function Navigation() {
@@ -13,7 +14,7 @@ export default function Navigation() {
   return (
     <nav className={css.navigation}>
       <Link to="/" className={css.logoContainer}>
-        <img src={LearnLogo} alt="LearnLingo Logo" />
+        <Icon name="ukraine" widths={28} height={28}></Icon>
         <span className={css.logoText}>LearnLingo</span>
       </Link>
       <div className={css.navLinks}>

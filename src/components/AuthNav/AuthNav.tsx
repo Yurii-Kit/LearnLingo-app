@@ -1,9 +1,8 @@
 import { useState } from "react";
-import loginIcon from "../../assets/log-in-01.svg";
-
 import css from "./AuthNav.module.css";
 import ModalLogin from "../ModalLogin/ModalLogin";
 import ModalRegister from "../ModalRegister/ModalRegister";
+import Icon from "../Icon/Icon";
 
 export default function AuthNav() {
   const [modalType, setModalType] = useState<"login" | "register" | null>(null);
@@ -23,7 +22,7 @@ export default function AuthNav() {
         className={css.loginButton}
         onClick={() => openModal("login")}
       >
-        <img src={loginIcon} alt="Login Icon" />
+        <Icon name="log-in-01" width={20} height={20}></Icon>
         Log in
       </button>
       <button

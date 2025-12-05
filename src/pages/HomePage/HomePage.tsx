@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import Container from "../../components/Container/Container";
+import personImage from "../../assets/68e4226188648a055ee1b42bed644f46-sticker 1@1x.png";
+import personImage2x from "../../assets/68e4226188648a055ee1b42bed644f46-sticker 1@2x.png";
+import macImage from "../../assets/Mac.png";
 
 import css from "./HomePage.module.css";
 
@@ -27,15 +30,12 @@ export default function HomePage() {
         </div>
         <div className={css.rightBox}>
           <img
-            src="/src/assets/68e4226188648a055ee1b42bed644f46-sticker 1@1x.png"
+            src={personImage}
+            srcSet={`${personImage} 1x, ${personImage2x} 2x`}
             alt="smiling person"
             className={css.personImage}
           />
-          <img
-            src="/src/assets/Mac.png"
-            alt="laptop"
-            className={css.laptopImage}
-          />
+          <img src={macImage} alt="laptop" className={css.laptopImage} />
         </div>
       </section>
       <section className={css.stats}>
