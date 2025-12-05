@@ -1,0 +1,19 @@
+.favoritePage {
+    background: #f8f8f8;
+    padding: 32px 0;
+    min-height: calc(100vh - 100px);
+}
+
+.error {
+    text-align: center;
+    color: #e74c3c;
+    font-size: 18px;
+    padding: 32px;
+}
+
+.noResults {
+    text-align: center;
+    color: #8a8a89;
+    font-size: 18px;
+    padding: 32px;
+}

@@ -83,20 +83,13 @@ export interface TeachersState {
   setIsError: (isError: boolean) => void;
 }
 // Options Store Types
+
 export interface LanguageOption {
   label: string;
   value: string;
 }
-
-export interface LevelOption {
-  label: string;
-  value: string;
-}
-
-export interface PriceOption {
-  label: string;
-  value: string;
-}
+export type LevelOption = LanguageOption;
+export type PriceOption = LanguageOption;
 
 export interface OptionsState {
   languageOptions: LanguageOption[];

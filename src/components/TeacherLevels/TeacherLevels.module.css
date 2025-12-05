@@ -1,0 +1,23 @@
+.levelsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.levelsList li:first-child {
+    background: #f4c550;
+    border: transparent;
+}
+
+.levelBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 12px;
+    border-radius: 35px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.14;
+    color: #121417;
+    border: 1px solid rgba(18, 20, 23, 0.2);
+}

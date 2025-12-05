@@ -1,95 +1,28 @@
-import { useEffect, useMemo, useState, useRef } from "react";
+import { useEffect, useMemo, useState } from "react";
 import css from "./TeachersPage.module.css";
 import Container from "../../components/Container/Container";
 import SelectorField from "../../components/SelectorField/SelectorField";
 import TeacherList from "../../components/TeacherList/TeacherList";
-// import LoaderOverlay from "../../components/LoaderOverlay/LoaderOverlay";
-import {
-  fetchTeachers,
-  getUniqueLanguages,
-  getUniqueLevels,
-  getPriceRange,
-} from "../../lib/services/teachersApi";
-import { useTeachersStore } from "../../lib/store/teachersStore";
-import { useOptionsStore } from "../../lib/store/optionsStore";
-import { useAuthStore } from "../../lib/store/authStore";
 import LoaderOverlay from "../../components/LoaderOverlay/LoaderOverlay";
+import { useTeachersData } from "../../lib/hooks/useTeachersData";
 
 export default function TeachersPage() {
-  // AuthStore - використовуємо окремі селектори
-  const isAuthLoading = useAuthStore((state) => state.isLoading);
-
-  // TeachersStore - використовуємо окремі селектори
-  const teachers = useTeachersStore((state) => state.teachers);
-  const isLoading = useTeachersStore((state) => state.isLoading);
-  const isError = useTeachersStore((state) => state.isError);
-
-  // OptionsStore - використовуємо окремі селектори
-  const languageOptions = useOptionsStore((state) => state.languageOptions);
-  const levelOptions = useOptionsStore((state) => state.levelOptions);
-  const priceOptions = useOptionsStore((state) => state.priceOptions);
+  // Використовуємо спільний хук для завантаження даних
+  const {
+    teachers,
+    isLoading,
+    isError,
+    languageOptions,
+    levelOptions,
+    priceOptions,
+  } = useTeachersData();
 
   const [visibleCount, setVisibleCount] = useState(4);
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
   const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
   const [selectedPrice, setSelectedPrice] = useState<string | null>(null);
 
-  // Використовуємо ref для відслідковування чи дані вже завантажені
-  const hasLoadedRef = useRef(false);
-
-  // Початкове завантаження вчителів та опцій фільтрів
-  useEffect(() => {
-    // Чекати поки завершиться завантаження аутентифікації
-    if (isAuthLoading) return;
-
-    // Якщо дані вже завантажені, не завантажувати знову
-    if (hasLoadedRef.current) return;
-
-    const loadInitialData = async () => {
-      hasLoadedRef.current = true; // Встановлюємо прапорець перед завантаженням
-
-      try {
-        useTeachersStore.getState().setIsLoading(true);
-
-        //  1. Завантажити ВСІ вчителі для створення опцій фільтрів
-        const allTeachers = await fetchTeachers();
-
-        // Створити опції для селектів
-        const languages = getUniqueLanguages(allTeachers);
-        useOptionsStore
-          .getState()
-          .setLanguageOptions(
-            languages.map((lang) => ({ value: lang, label: lang }))
-          );
-
-        const levels = getUniqueLevels(allTeachers);
-        useOptionsStore
-          .getState()
-          .setLevelOptions(
-            levels.map((level) => ({ value: level, label: level }))
-          );
-
-        const prices = getPriceRange(allTeachers);
-        useOptionsStore.getState().setPriceOptions(
-          prices.map((price) => ({
-            value: price.toString(),
-            label: `${price}$`,
-          }))
-        );
-
-        // Зберегти вчителів у store
-        useTeachersStore.getState().setTeachers(allTeachers);
-      } catch (error) {
-        useTeachersStore.getState().setIsError(true);
-      } finally {
-        useTeachersStore.getState().setIsLoading(false);
-      }
-    };
-
-    loadInitialData();
-  }, [isAuthLoading]);
-
-  // Фільтрація вчителів через useMemo замість useEffect
+  // Фільтрація вчителів через useMemo для оптимізації
   const filteredTeachers = useMemo(() => {
     let filtered = [...teachers];
 

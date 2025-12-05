@@ -1,0 +1,73 @@
+.stats {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 64px;
+}
+
+.statsList {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 32px;
+    font-size: 16px;
+}
+
+.statItem {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.statItem:not(:last-child)::after {
+    position: absolute;
+    content: "";
+    right: -16px;
+    width: 1px;
+    height: 16px;
+    display: inline-block;
+    background-color: rgba(18, 20, 23, 0.2);
+}
+
+.bookOpen {
+    stroke: #121417;
+}
+
+.star {
+    stroke: #121417;
+}
+
+.statText {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #121417;
+}
+
+.price {
+    color: #38cd3e;
+    font-weight: 500;
+}
+
+.favoriteBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.heart {
+    stroke: #121417;
+}
+
+.heartActive {
+    stroke: #ff0000;
+    fill: #ff0000;
+}
+
+.heart:hover {
+    scale: 1.1;
+}

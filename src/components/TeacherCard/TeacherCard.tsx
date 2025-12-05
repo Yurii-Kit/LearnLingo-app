@@ -1,11 +1,14 @@
 import { useState } from "react";
 import type { TeacherCardProps } from "../../types";
 import css from "./TeacherCard.module.css";
-import Icon from "../Icon/Icon";
 import { useAuthStore } from "../../lib/store/authStore";
 import ModalRequaried from "../ModalRequaried/ModalRequaried";
 import ModalBookLesson from "../ModalBookLesson/ModalBookLesson";
-import { clsx } from "clsx";
+import TeacherAvatar from "../TeacherAvatar/TeacherAvatar";
+import TeacherStats from "../TeacherStats/TeacherStats";
+import TeacherInfo from "../TeacherInfo/TeacherInfo";
+import TeacherReviews from "../TeacherReviews/TeacherReviews";
+import TeacherLevels from "../TeacherLevels/TeacherLevels";
 
 export default function TeacherCard({ teacher }: TeacherCardProps) {
   const [showMore, setShowMore] = useState(false);
@@ -34,16 +37,11 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
 
   return (
     <div className={css.card}>
-      <div className={css.avatarWrapper}>
-        <img
-          src={teacher.avatar_url}
-          alt={`${teacher.name} ${teacher.surname}`}
-          className={css.avatar}
-          width={96}
-          height={96}
-        />
-        <Icon className={css.spot} name="Group-82" width={12} height={12} />
-      </div>
+      <TeacherAvatar
+        avatarUrl={teacher.avatar_url}
+        name={teacher.name}
+        surname={teacher.surname}
+      />
 
       <div className={css.content}>
         <div className={css.mainInfo}>
@@ -54,78 +52,20 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
                 {teacher.name} {teacher.surname}
               </h3>
             </div>
-            <div className={css.stats}>
-              <ul className={css.statsList}>
-                <li className={css.statItem}>
-                  <Icon
-                    name="book-open-01"
-                    width={16}
-                    height={16}
-                    className={css.bookOpen}
-                  />
-                  <p className={css.statText}>Lessons online</p>
-                </li>
-
-                <li className={css.statItem}>
-                  <p className={css.statText}>
-                    Lessons done: {teacher.lessons_done}
-                  </p>
-                </li>
-                <li className={css.statItem}>
-                  <Icon
-                    name="star"
-                    width={16}
-                    height={16}
-                    className={css.star}
-                  />
-                  <p className={css.statText}>Rating: {teacher.rating}</p>
-                </li>
-                <li className={css.statItem}>
-                  <p className={css.statText}>
-                    Price / 1 hour:
-                    <span className={css.price}>
-                      {" "}
-                      {teacher.price_per_hour}$
-                    </span>
-                  </p>
-                </li>
-              </ul>
-              <button
-                type="button"
-                className={css.favoriteBtn}
-                onClick={handleToggleFavorite}
-              >
-                <Icon
-                  name="heart"
-                  width={26}
-                  height={26}
-                  className={clsx(css.heart, { [css.heartActive]: isFavorite })}
-                />
-              </button>
-            </div>
+            <TeacherStats
+              lessonsDone={teacher.lessons_done}
+              rating={teacher.rating}
+              pricePerHour={teacher.price_per_hour}
+              isFavorite={isFavorite}
+              onToggleFavorite={handleToggleFavorite}
+            />
           </div>
 
-          <div className={css.info}>
-            <p className={css.infoItem}>
-              Speaks:{" "}
-              {teacher.languages.map((lang, index) => (
-                <span key={lang} className={css.infoItemLang}>
-                  {lang}
-                  {index < teacher.languages.length - 1 && ", "}
-                </span>
-              ))}
-            </p>
-            <p className={css.infoItem}>
-              Lesson Info:{" "}
-              <span className={css.infoItemDesc}>{teacher.lesson_info}</span>
-            </p>
-            <p className={css.infoItem}>
-              Conditions:{" "}
-              <span className={css.infoItemDesc}>
-                {teacher.conditions.join(" ")}
-              </span>
-            </p>
-          </div>
+          <TeacherInfo
+            languages={teacher.languages}
+            lessonInfo={teacher.lesson_info}
+            conditions={teacher.conditions}
+          />
 
           {!showMore ? (
             <button
@@ -139,41 +79,10 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
           )}
         </div>
 
-        {showMore && (
-          <>
-            <div className={css.reviews}>
-              {teacher.reviews.map((review, index) => (
-                <div key={index} className={css.review}>
-                  <div className={css.reviewUser}>
-                    <div className={css.reviewHeader}>
-                      <strong className={css.reviewUserImage}>
-                        {review.reviewer_name[0].toUpperCase()}
-                      </strong>
-                      <div className={css.reviewerInfo}>
-                        <span className={css.reviewerName}>
-                          {review.reviewer_name}
-                        </span>
-                        <span className={css.reviewRating}>
-                          <Icon name="star" width={16} height={16} />
-                          {review.reviewer_rating.toFixed(1)}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <p className={css.reviewComment}>{review.comment}</p>
-                </div>
-              ))}
-            </div>
-          </>
-        )}
+        {showMore && <TeacherReviews reviews={teacher.reviews} />}
 
-        <ul className={css.levelsList}>
-          {teacher.levels.map((level, index) => (
-            <li key={index} className={css.levelBadge}>
-              #{level}
-            </li>
-          ))}
-        </ul>
+        <TeacherLevels levels={teacher.levels} />
+
         {showMore && (
           <button
             type="button"
