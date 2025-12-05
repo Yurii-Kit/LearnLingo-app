@@ -125,6 +125,7 @@ export interface ContainerProps {
 export interface ModalWindowProps {
   children: React.ReactNode;
   onClose: () => void;
+  className?: string;
 }
 
 export interface ModalLoginProps {
@@ -138,6 +139,12 @@ export interface ModalRegisterProps {
 export interface ModalRequariedProps {
   onClose: () => void;
 }
+
+export interface ModalBookLessonProps {
+  onClose: () => void;
+  teacher: Teacher;
+}
+
 // Form Input Types
 export interface LoginFormInputs {
   email: string;

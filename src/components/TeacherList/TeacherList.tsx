@@ -1,5 +1,5 @@
 import TeacherCard from "../TeacherCard/TeacherCard";
-import type { TeacherListProps } from "../../types";
+import type { TeacherListProps } from "../../types/index";
 
 import css from "./TeacherList.module.css";
 

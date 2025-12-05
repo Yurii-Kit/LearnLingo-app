@@ -4,17 +4,29 @@ import css from "./TeacherCard.module.css";
 import Icon from "../Icon/Icon";
 import { useAuthStore } from "../../lib/store/authStore";
 import ModalRequaried from "../ModalRequaried/ModalRequaried";
+import ModalBookLesson from "../ModalBookLesson/ModalBookLesson";
 import { clsx } from "clsx";
 
 export default function TeacherCard({ teacher }: TeacherCardProps) {
   const [showMore, setShowMore] = useState(false);
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [modalType, setModalType] = useState<"auth" | "bookLesson" | null>(
+    null
+  );
   const { favorites, addFavorite, removeFavorite, isLoggedIn } = useAuthStore();
 
+  const openModal = (type: "auth" | "bookLesson") => {
+    setModalType(type);
+  };
+
+  const closeModal = () => {
+    setModalType(null);
+  };
+
   const isFavorite = favorites.includes(teacher.id);
+
   const handleToggleFavorite = () => {
     if (!isLoggedIn) {
-      setIsOpenModal(true);
+      openModal("auth");
       return;
     }
     isFavorite ? removeFavorite(teacher.id) : addFavorite(teacher.id);
@@ -163,12 +175,19 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
           ))}
         </ul>
         {showMore && (
-          <button type="button" className={css.contactBtn}>
+          <button
+            type="button"
+            className={css.contactBtn}
+            onClick={() => openModal("bookLesson")}
+          >
             Book trial lesson
           </button>
         )}
       </div>
-      {isOpenModal && <ModalRequaried onClose={() => setIsOpenModal(false)} />}
+      {modalType === "auth" && <ModalRequaried onClose={closeModal} />}
+      {modalType === "bookLesson" && (
+        <ModalBookLesson onClose={closeModal} teacher={teacher} />
+      )}
     </div>
   );
 }

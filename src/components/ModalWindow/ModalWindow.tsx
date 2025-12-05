@@ -4,7 +4,11 @@ import { useEffect } from "react";
 import type { ModalWindowProps } from "../../types";
 import css from "../ModalWindow/ModalWindow.module.css";
 
-export default function ModalWindow({ children, onClose }: ModalWindowProps) {
+export default function ModalWindow({
+  children,
+  onClose,
+  className,
+}: ModalWindowProps) {
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -32,7 +36,7 @@ export default function ModalWindow({ children, onClose }: ModalWindowProps) {
       role="dialog"
       arial-modal="true"
     >
-      <div className={css.modal}>
+      <div className={`${css.modal} ${className || ""}`}>
         <button
           className={css.closeBtn}
           onClick={onClose}
