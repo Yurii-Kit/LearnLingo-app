@@ -1,24 +1,24 @@
 import { useEffect, useMemo, useState } from "react";
 import css from "./FavoritePage.module.css";
-import Container from "../components/Container/Container";
-import SelectorField from "../components/SelectorField/SelectorField";
-import TeacherList from "../components/TeacherList/TeacherList";
+import Container from "../../components/Container/Container";
+import SelectorField from "../../components/SelectorField/SelectorField";
+import TeacherList from "../../components/TeacherList/TeacherList";
 import {
   fetchTeachers,
   getUniqueLanguages,
   getUniqueLevels,
   getPriceRange,
-} from "../lib/services/teachersApi";
-import { useAuthStore } from "../lib/store/authStore";
-import { useOptionsStore } from "../lib/store/optionsStore";
-import type { Teacher } from "../types";
-import LoaderOverlay from "../components/LoaderOverlay/LoaderOverlay";
+} from "../../lib/services/teachersApi";
+import { useAuthStore } from "../../lib/store/authStore";
+import { useOptionsStore } from "../../lib/store/optionsStore";
+import type { Teacher } from "../../types";
+import LoaderOverlay from "../../components/LoaderOverlay/LoaderOverlay";
 
 export default function FavoritePage() {
   console.log("⭐ [FAVORITE PAGE] FavoritePage монтується");
 
   // AuthStore
-  const user = useAuthStore((state) => state.user);
+
   const favorites = useAuthStore((state) => state.favorites);
   const isAuthLoading = useAuthStore((state) => state.isLoading);
 

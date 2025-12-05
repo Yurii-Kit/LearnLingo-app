@@ -110,7 +110,6 @@ export default function TeachersPage() {
     };
 
     loadInitialData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthLoading]);
 
   // Фільтрація вчителів через useMemo замість useEffect

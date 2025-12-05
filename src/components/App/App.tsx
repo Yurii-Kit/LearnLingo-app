@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 import HomePage from "../../pages/HomePage/HomePage";
 import TeachersPage from "../../pages/TeacherPage/TeachersPage";
-import Favorites from "../../pages/FavoritePage";
+import Favorites from "../../pages/FavoritePage/FavoritePage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import PrivateRoute from "../../pages/PrivateRoute";
 
