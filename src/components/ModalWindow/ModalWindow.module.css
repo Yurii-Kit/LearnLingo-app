@@ -10,7 +10,7 @@
     align-items: center;
     z-index: 1000;
 
-    animation: fadeIn 0.3s ease forwards;
+    animation: fadeIn var(--transition-normal) forwards;
 }
 
 .modal {
@@ -19,15 +19,15 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    gap: 20px;
-    border-radius: 30px;
-    padding: 64px;
+    gap: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-4xl);
     width: 100%;
     max-width: 566px;
 
-    background: #fff;
+    background: var(--color-white);
 
-    animation: scaleIn 0.3s ease forwards;
+    animation: scaleIn var(--transition-normal) forwards;
 }
 
 
@@ -35,8 +35,8 @@
 
 .closeBtn {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
     width: 32px;
     height: 32px;
     padding: 0;

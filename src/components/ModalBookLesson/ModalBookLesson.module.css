@@ -12,28 +12,26 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
-    gap: 20px;
+    gap: var(--spacing-lg);
 
     width: 472px;
-    margin-bottom: 20px;
+    margin-bottom: var(--spacing-lg);
 }
 
 .title {
-    font-weight: 500;
-    font-size: 40px;
-    /* line-height: 48px; */
-    line-height: 1.2;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-4xl);
+    line-height: var(--line-height-tight);
     letter-spacing: -0.02em;
-    color: #121417;
+    color: var(--color-text);
 }
 
 .description {
-    font-weight: 400;
-    font-size: 16px;
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-base);
 
-    /* line-height: 22px; */
-    line-height: 1.375;
-    color: rgba(18, 20, 23, 0.8);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-secondary);
 }
 
 
@@ -59,34 +57,31 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
-    gap: 4px;
+    gap: var(--spacing-xs);
 }
 
 .teacherLabel {
-    font-weight: 500;
-    font-size: 12px;
-    /* line-height: 16px; */
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-xs);
     line-height: 1.33333;
-    color: #8a8a89;
+    color: var(--color-gray);
 }
 
 .teacherName {
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-base);
 
-    /* line-height: 24px; */
-    line-height: 1.5;
-    color: #121417;
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text);
 }
 
 .text {
-    font-weight: 500;
-    font-size: 24px;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-2xl);
 
-    /* line-height: 32px; */
     line-height: 1.33333;
-    color: #121417;
-    margin-bottom: 20px;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-lg);
 }
 
 .form {}
@@ -96,7 +91,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--spacing-md);
     margin-bottom: 42px;
 }
 
@@ -105,16 +100,14 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    gap: 8px;
+    gap: var(--spacing-sm);
 
-    /* background: #f4c550; */
-    font-weight: 400;
-    font-size: 16px;
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-base);
 
-    /* line-height: 22px; */
-    line-height: 1.375;
+    line-height: var(--line-height-normal);
     text-align: center;
-    color: #121417;
+    color: var(--color-text);
 }
 
 .inputs {
@@ -122,54 +115,51 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
-    gap: 18px;
+    gap: var(--spacing-lg);
     width: 100%;
     margin-bottom: 40px;
 }
 
 .input {
-    border: 1px solid rgba(18, 20, 23, 0.1);
-    border-radius: 12px;
-    padding: 15px 18px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    padding: 15px var(--spacing-lg);
     width: 100%;
 
-    font-weight: 400;
-    font-size: 16px;
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-base);
 
-    /* line-height: 22px; */
-    line-height: 1.375;
-    color: #121417;
+    line-height: var(--line-height-normal);
+    color: var(--color-text);
 
 }
 
 .input:focus {
     outline: none;
-    border: 1px solid #f4c550;
+    border: 1px solid var(--color-primary);
 
-    box-shadow: 0px 0px 0px 4px rgba(74, 144, 226, 0.2);
+    box-shadow: var(--shadow-focus);
 }
 
 .input::placeholder {
-    font-weight: 400;
-    font-size: 16px;
-    /* line-height: 22px; */
-    line-height: 1.375;
-    color: #121417;
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    color: var(--color-text);
 }
 
 .submitBtn {
-    border-radius: 12px;
-    padding: 16px;
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-md);
     width: 100%;
-    background: #f4c550;
+    background: var(--color-primary);
 
-    font-weight: 700;
-    font-size: 18px;
-    /* line-height: 28px; */
-    line-height: 1.55556;
-    color: #121417;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-loose);
+    color: var(--color-text);
 }
 
 .submitBtn:hover {
-    background: #ffdc86;
+    background: var(--color-primary-hover);
 }

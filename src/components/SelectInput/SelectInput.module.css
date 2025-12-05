@@ -3,13 +3,12 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--spacing-sm);
 }
 
 .label {
-    font-weight: 500;
-    font-size: 14px;
-    /* line-height: 18px; */
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
     line-height: 1.28571;
-    color: #8a8a89;
+    color: var(--color-gray);
 }

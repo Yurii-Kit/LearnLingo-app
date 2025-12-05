@@ -4,13 +4,83 @@
 /* Підключення всіх потрібних стилів Roboto */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap');
 
+
+:root {
+    /* Кольори */
+    --color-primary: #f4c550;
+    --color-primary-hover: #ffdc86;
+    --color-text: #121417;
+    --color-text-secondary: rgba(18, 20, 23, 0.8);
+    --color-gray: #8a8a89;
+    --color-white: #fff;
+    --color-background: #f8f8f8;
+    --color-error: #e74c3c;
+    --color-success: #38cd3e;
+    --color-border: rgba(18, 20, 23, 0.1);
+    --color-border-hover: rgba(18, 20, 23, 0.2);
+
+    /* Радіуси */
+    --border-radius-sm: 12px;
+    --border-radius-md: 24px;
+    --border-radius-lg: 30px;
+    --border-radius-full: 50%;
+
+    /* Типографіка */
+    --font-family: 'Roboto', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    /* Line heights */
+    --line-height-tight: 1.2;
+    --line-height-snug: 1.25;
+    --line-height-normal: 1.375;
+    --line-height-relaxed: 1.5;
+    --line-height-loose: 1.55556;
+
+    /* Font sizes */
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    --font-size-2xl: 24px;
+    --font-size-3xl: 28px;
+    --font-size-4xl: 40px;
+    --font-size-5xl: 48px;
+
+    /* Відступи */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 20px;
+    --spacing-xl: 24px;
+    --spacing-2xl: 32px;
+    --spacing-3xl: 48px;
+    --spacing-4xl: 64px;
+
+    /* Тіні та ефекти */
+    --shadow-focus: 0px 0px 0px 4px rgba(74, 144, 226, 0.2);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
+    color: var(--color-text);
+    background-color: var(--color-white);
     line-height: 1.5;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin: 0;
 }
 
 h1,

@@ -3,6 +3,6 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: row;
-    gap: 20px;
+    gap: var(--spacing-lg);
     min-width: 583px;
 }

@@ -1,13 +1,13 @@
 .filtersContainer {
     background-color: inherit;
-    padding: 0 64px;
+    padding: 0 var(--spacing-4xl);
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: var(--spacing-2xl);
 }
 
 .favoritePage {
-    background: #f8f8f8;
-    padding: 32px 0;
+    background: var(--color-background);
+    padding: var(--spacing-2xl) 0;
     min-height: calc(100vh - 100px);
 }

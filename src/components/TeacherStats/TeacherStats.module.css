@@ -2,15 +2,15 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 64px;
+    gap: var(--spacing-4xl);
 }
 
 .statsList {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 32px;
-    font-size: 16px;
+    gap: var(--spacing-2xl);
+    font-size: var(--font-size-base);
 }
 
 .statItem {
@@ -19,7 +19,7 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
-    gap: 8px;
+    gap: var(--spacing-sm);
 }
 
 .statItem:not(:last-child)::after {
@@ -27,29 +27,29 @@
     content: "";
     right: -16px;
     width: 1px;
-    height: 16px;
+    height: var(--spacing-md);
     display: inline-block;
-    background-color: rgba(18, 20, 23, 0.2);
+    background-color: var(--color-border-hover);
 }
 
 .bookOpen {
-    stroke: #121417;
+    stroke: var(--color-text);
 }
 
 .star {
-    stroke: #121417;
+    stroke: var(--color-text);
 }
 
 .statText {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #121417;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text);
 }
 
 .price {
-    color: #38cd3e;
-    font-weight: 500;
+    color: var(--color-success);
+    font-weight: var(--font-weight-medium);
 }
 
 .favoriteBtn {
@@ -60,7 +60,7 @@
 }
 
 .heart {
-    stroke: #121417;
+    stroke: var(--color-text);
 }
 
 .heartActive {

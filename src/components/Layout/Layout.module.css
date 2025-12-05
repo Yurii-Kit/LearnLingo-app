@@ -4,8 +4,8 @@
     column-gap: 24px; */
     max-width: 1440px;
 
-    background: #fff;
+    background: var(--color-white);
     margin: 0 auto;
-    padding: 0 64px;
+    padding: 0 var(--spacing-4xl);
 
 }

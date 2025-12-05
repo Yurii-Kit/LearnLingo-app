@@ -1,8 +1,8 @@
 .noResults {
     text-align: center;
-    color: #8a8a89;
-    font-size: 18px;
-    padding: 32px;
+    color: var(--color-gray);
+    font-size: var(--font-size-lg);
+    padding: var(--spacing-2xl);
 }
 
 .loadMoreBtn {
@@ -11,20 +11,20 @@
     justify-content: center;
     flex-direction: row;
     gap: 0px;
-    border-radius: 12px;
-    padding-block: 16px;
-    padding-inline: 48px;
+    border-radius: var(--border-radius-sm);
+    padding-block: var(--spacing-md);
+    padding-inline: var(--spacing-3xl);
     width: 183px;
     height: 60px;
-    background: #f4c550;
+    background: var(--color-primary);
     margin: 0 auto;
 
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 1.55556;
-    color: #121417;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-loose);
+    color: var(--color-text);
 }
 
 .loadMoreBtn:hover {
-    background: #f0bd3e;
+    background: var(--color-primary-hover);
 }

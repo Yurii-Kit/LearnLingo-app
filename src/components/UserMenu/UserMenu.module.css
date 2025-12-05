@@ -3,16 +3,16 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
-    gap: 16px;
+    gap: var(--spacing-md);
 
 
 }
 
 .userName {
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 1.25;
-    color: #121417;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-snug);
+    color: var(--color-text);
 }
 
 .logOutBtn {
@@ -20,26 +20,25 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    gap: 8px;
+    gap: var(--spacing-sm);
 
-    border-radius: 12px;
+    border-radius: var(--border-radius-sm);
     padding-block: 14px;
     padding-inline: 39px;
     width: 166px;
     height: 48px;
 
-    background: #121417;
+    background: var(--color-text);
 
-    font-weight: 700;
-    font-size: 16px;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
 
-    /* line-height: 20px; */
-    line-height: 1.25;
-    color: #fff;
+    line-height: var(--line-height-snug);
+    color: var(--color-white);
 
     border: none;
 }
 
 .logOutBtn:hover {
-    color: #ffdc86;
+    color: var(--color-primary-hover);
 }

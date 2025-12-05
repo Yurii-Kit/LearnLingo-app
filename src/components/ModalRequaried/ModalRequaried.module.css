@@ -1,32 +1,30 @@
 .message {
-    margin-bottom: 20px;
-    font-size: 24px;
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-2xl);
     font-weight: bold;
-    color: #121417;
-    ;
+    color: var(--color-text);
 }
 
 .wrapperBtn {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: var(--spacing-lg);
 }
 
 .button {
-    background: #f4c550;
-    border-radius: 12px;
+    background: var(--color-primary);
+    border-radius: var(--border-radius-sm);
     border: none;
-    padding: 16px 32px;
+    padding: var(--spacing-md) var(--spacing-2xl);
     width: 180px;
 
     font-weight: 600;
-    font-size: 18px;
-    /* line-height: 28px; */
-    line-height: 1.55556;
-    color: #121417;
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-loose);
+    color: var(--color-text);
 }
 
 .button:hover {
-    background: #ffda6a;
+    background: var(--color-primary-hover);
 }

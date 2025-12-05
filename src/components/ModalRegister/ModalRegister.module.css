@@ -3,28 +3,25 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
-    gap: 20px;
+    gap: var(--spacing-lg);
 
     width: 438px;
-    /* height: 112px; */
 }
 
 .title {
-    font-weight: 500;
-    font-size: 40px;
-    /* line-height: 48px; */
-    line-height: 1.2;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-4xl);
+    line-height: var(--line-height-tight);
     letter-spacing: -0.02em;
-    color: #121417;
+    color: var(--color-text);
 }
 
 .text {
-    font-weight: 400;
-    font-size: 16px;
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-base);
 
-    /* line-height: 22px; */
-    line-height: 1.375;
-    color: rgba(18, 20, 23, 0.8);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-secondary);
 }
 
 .form {
@@ -32,32 +29,30 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
-    gap: 18px;
+    gap: var(--spacing-lg);
     width: 100%;
 
 }
 
 .inputField {
-    border: 1px solid rgba(18, 20, 23, 0.1);
-    border-radius: 12px;
-    padding: 16px 18px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-md) var(--spacing-lg);
     width: 100%;
 
 }
 
 .inputField::placeholder {
-    font-weight: 400;
-    font-size: 16px;
-    /* line-height: 22px; */
-    line-height: 1.375;
-    color: #121417;
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    color: var(--color-text);
 }
 
 .inputField:focus {
     outline: none;
-    border: 1px solid #f4c550;
-    ;
-    box-shadow: 0px 0px 0px 4px rgba(74, 144, 226, 0.2);
+    border: 1px solid var(--color-primary);
+    box-shadow: var(--shadow-focus);
 }
 
 .passwordWrapper {
@@ -67,7 +62,7 @@
 
 .eyeBtn {
     position: absolute;
-    right: 12px;
+    right: var(--border-radius-sm);
     top: 50%;
     transform: translateY(-50%);
     background: none;
@@ -78,26 +73,23 @@
 
 
 .formBtn {
-    border-radius: 12px;
-    padding: 16px;
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-md);
     width: 438px;
-    background: #f4c550;
+    background: var(--color-primary);
 
-    font-weight: 700;
-    font-size: 18px;
-    /* line-height: 28px; */
-    line-height: 1.55556;
-    color: #121417;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-loose);
+    color: var(--color-text);
 }
 
 .formBtn:hover {
-    background: #ffdc86;
+    background: var(--color-primary-hover);
 }
 
 .error {
     position: absolute;
-    color: red;
-    font-size: 12px;
-    /* margin-top: -8px;
-    margin-bottom: 10px; */
+    color: var(--color-error);
+    font-size: var(--font-size-xs);
 }

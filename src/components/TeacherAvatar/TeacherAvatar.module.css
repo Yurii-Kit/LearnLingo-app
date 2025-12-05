@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     border: 3px solid #fbe9ba;
-    border-radius: 50%;
+    border-radius: var(--border-radius-full);
     width: 120px;
     height: 120px;
     padding: 9px;
@@ -14,12 +14,12 @@
 .avatar {
     width: 96px;
     height: 96px;
-    border-radius: 50%;
+    border-radius: var(--border-radius-full);
     object-fit: cover;
 }
 
 .spot {
     position: absolute;
-    top: 16px;
-    right: 20px;
+    top: var(--spacing-md);
+    right: var(--spacing-lg);
 }
