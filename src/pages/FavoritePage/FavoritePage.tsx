@@ -15,8 +15,6 @@ import type { Teacher } from "../../types";
 import LoaderOverlay from "../../components/LoaderOverlay/LoaderOverlay";
 
 export default function FavoritePage() {
-  console.log("⭐ [FAVORITE PAGE] FavoritePage монтується");
-
   // AuthStore
 
   const favorites = useAuthStore((state) => state.favorites);

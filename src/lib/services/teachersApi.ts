@@ -36,7 +36,6 @@ export const fetchTeachers = async (): Promise<Teacher[]> => {
     const teachers = Object.entries(data).map(([id, teacherDB]) =>
       mapTeacherFromDB(id, teacherDB)
     );
-    console.log("Fetched teachers:", teachers);
 
     return teachers;
   } catch (error) {

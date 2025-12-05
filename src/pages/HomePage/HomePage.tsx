@@ -7,8 +7,6 @@ import macImage from "../../assets/Mac.png";
 import css from "./HomePage.module.css";
 
 export default function HomePage() {
-  console.log("🏠 [HOME PAGE] HomePage монтується");
-
   return (
     <Container className={css.heroContainer}>
       <section className={css.hero}>

@@ -16,18 +16,8 @@ import { useAuthStore } from "../../lib/store/authStore";
 import LoaderOverlay from "../../components/LoaderOverlay/LoaderOverlay";
 
 export default function TeachersPage() {
-  console.log("👨‍🏫 [TEACHERS PAGE] TeachersPage монтується");
-
   // AuthStore - використовуємо окремі селектори
   const isAuthLoading = useAuthStore((state) => state.isLoading);
-  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
-
-  console.log(
-    "👨‍🏫 [TEACHERS PAGE] isAuthLoading:",
-    isAuthLoading,
-    "isLoggedIn:",
-    isLoggedIn
-  );
 
   // TeachersStore - використовуємо окремі селектори
   const teachers = useTeachersStore((state) => state.teachers);
@@ -49,14 +39,6 @@ export default function TeachersPage() {
 
   // Початкове завантаження вчителів та опцій фільтрів
   useEffect(() => {
-    console.log("📚 [TEACHERS PAGE] useEffect - початкове завантаження");
-    console.log(
-      "📚 [TEACHERS PAGE] isAuthLoading:",
-      isAuthLoading,
-      "hasLoadedRef.current:",
-      hasLoadedRef.current
-    );
-
     // Чекати поки завершиться завантаження аутентифікації
     if (isAuthLoading) return;
 
@@ -67,15 +49,10 @@ export default function TeachersPage() {
       hasLoadedRef.current = true; // Встановлюємо прапорець перед завантаженням
 
       try {
-        console.log("📚 [TEACHERS PAGE] Починаємо завантаження вчителів...");
         useTeachersStore.getState().setIsLoading(true);
 
         //  1. Завантажити ВСІ вчителі для створення опцій фільтрів
         const allTeachers = await fetchTeachers();
-        console.log(
-          "📚 [TEACHERS PAGE] Завантажено вчителів:",
-          allTeachers.length
-        );
 
         // Створити опції для селектів
         const languages = getUniqueLanguages(allTeachers);
@@ -114,16 +91,6 @@ export default function TeachersPage() {
 
   // Фільтрація вчителів через useMemo замість useEffect
   const filteredTeachers = useMemo(() => {
-    console.log("🔍 [TEACHERS PAGE] useMemo - фільтрація");
-    console.log(
-      "🔍 [TEACHERS PAGE] selectedLanguage:",
-      selectedLanguage,
-      "selectedLevel:",
-      selectedLevel,
-      "selectedPrice:",
-      selectedPrice
-    );
-
     let filtered = [...teachers];
 
     if (selectedLanguage) {
@@ -144,7 +111,6 @@ export default function TeachersPage() {
       );
     }
 
-    console.log("🔍 [TEACHERS PAGE] Відфільтровано вчителів:", filtered.length);
     return filtered;
   }, [selectedLanguage, selectedLevel, selectedPrice, teachers]);
 

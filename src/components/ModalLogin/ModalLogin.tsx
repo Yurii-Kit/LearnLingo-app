@@ -41,7 +41,6 @@ export default function ModalLogin({ onClose }: ModalLoginProps) {
 
   // 4. Функція сабміту отримує вже чисті дані
   const onSubmit = async (data: LoginFormInputs) => {
-    console.log(data); // Тут об'єкт { email: "...", password: "..." }
     try {
       setIsLoading(true);
       const userCredential = await signInWithEmailAndPassword(
@@ -57,7 +56,6 @@ export default function ModalLogin({ onClose }: ModalLoginProps) {
         name: user.displayName,
       });
       setIsLoggedIn(true);
-      console.log("GLOBAL USER:", useAuthStore.getState().user);
       reset(); // Очищення форми
       onClose();
       toast.success("Login successful");

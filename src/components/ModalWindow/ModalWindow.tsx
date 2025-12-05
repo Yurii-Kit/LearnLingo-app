@@ -34,7 +34,7 @@ export default function ModalWindow({
       className={css.backdrop}
       onClick={handleBackdropClick}
       role="dialog"
-      arial-modal="true"
+      aria-modal="true"
     >
       <div className={`${css.modal} ${className || ""}`}>
         <button

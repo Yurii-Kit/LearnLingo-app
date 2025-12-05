@@ -1,6 +1,7 @@
 import type { ModalBookLessonProps } from "../../types";
 import ModalWindow from "../ModalWindow/ModalWindow";
 import css from "./ModalBookLesson.module.css";
+import toast from "react-hot-toast";
 
 export default function ModalBookLesson({
   onClose,
@@ -12,6 +13,8 @@ export default function ModalBookLesson({
     };
 
     console.log(formValues);
+    onClose();
+    toast.success("Lesson booked successfully");
   };
   return (
     <ModalWindow onClose={onClose} className={css.modalBook}>

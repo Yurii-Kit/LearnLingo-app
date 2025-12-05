@@ -1,39 +1,33 @@
 // src/components/App.tsx
 import { Route, Routes } from "react-router-dom";
-import { Suspense } from "react";
-
-import HomePage from "../../pages/HomePage/HomePage";
-import TeachersPage from "../../pages/TeacherPage/TeachersPage";
-import Favorites from "../../pages/FavoritePage/FavoritePage";
-import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
+import { lazy, Suspense } from "react";
 import PrivateRoute from "../../pages/PrivateRoute";
-
 import Layout from "../Layout/Layout";
 import SvgSprite from "../Icon/SvgSprite/SvgSprite";
 import { Toaster } from "react-hot-toast";
 import LoaderOverlay from "../LoaderOverlay/LoaderOverlay";
-
 import { useCheckAuth } from "../../lib/hooks/checkAuth";
 import { useAuthStore } from "../../lib/store/authStore";
 
-function App() {
-  console.log("📱 [APP] Компонент App рендериться");
+const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
+const TeachersPage = lazy(() => import("../../pages/TeacherPage/TeachersPage"));
+const Favorites = lazy(() => import("../../pages/FavoritePage/FavoritePage"));
+const NotFoundPage = lazy(
+  () => import("../../pages/NotFoundPage/NotFoundPage")
+);
 
+function App() {
   useCheckAuth();
 
   const isLoading = useAuthStore((state) => state.isLoading);
-  console.log("📱 [APP] isLoading:", isLoading);
 
   if (isLoading) {
-    console.log("⏳ [APP] Показуємо LoaderOverlay");
     return (
       <div>
         <LoaderOverlay />
       </div>
     );
   }
-
-  console.log("📱 [APP] Рендеримо Routes");
 
   return (
     <>

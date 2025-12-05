@@ -7,7 +7,6 @@ import Container from "../Container/Container";
 
 export default function Header() {
   const user = useAuthStore((state) => state.user);
-  console.log("Header user:", user);
   return (
     <header className={css.header}>
       <Container className={css.headerContainer}>

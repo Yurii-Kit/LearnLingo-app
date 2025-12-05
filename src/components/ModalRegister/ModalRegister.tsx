@@ -51,7 +51,6 @@ export default function ModalRegister({ onClose }: ModalRegisterProps) {
       await updateProfile(user, {
         displayName: data.name,
       });
-      console.log("Registered user:", user);
 
       // Оновлюємо глобальний стан
       setUser({
@@ -59,7 +58,6 @@ export default function ModalRegister({ onClose }: ModalRegisterProps) {
         email: user.email,
         name: user.displayName,
       });
-      console.log("GLOBAL USER:", useAuthStore.getState().user);
 
       reset();
       onClose();

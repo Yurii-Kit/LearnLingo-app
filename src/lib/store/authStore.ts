@@ -17,7 +17,6 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     if (!user) return;
     const favorites = await FavoriteService.fetchFavoritesOnce(user.uid);
     set({ favorites });
-    console.log("Favorites loaded:", favorites);
   },
 
   addFavorite: async (teacherId: string) => {
