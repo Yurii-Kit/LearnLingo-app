@@ -132,7 +132,7 @@ Teacher data is stored in Firebase Realtime Database with the following structur
 
 ## 🔗 Links
 
-- [Live Demo](https://learnlingo-app.vercel.app)
+- [Live Demo](https://learn-lingo-app-xi.vercel.app/)
 - [Design Mockup](https://www.figma.com/file/dewf5jVviSTuWMMyU3d8Mc/Learn-Lingo)
 
 ## 📝 License
