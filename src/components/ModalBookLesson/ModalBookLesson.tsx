@@ -15,8 +15,9 @@ const loginSchema = Yup.object().shape({
     .email("Invalid email format")
     .required("Email is required"),
   phone: Yup.string()
-    .matches(/^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/g, "Invalid phone number")
-    .required("Phone number is required"),
+    .trim()
+    .required("Phone number is required")
+    .matches(/^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/g, "Invalid phone number"),
   reason: Yup.string().required("Please choose a reason"),
 });
 

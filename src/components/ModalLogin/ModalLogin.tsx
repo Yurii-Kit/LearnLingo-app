@@ -17,8 +17,9 @@ const loginSchema = Yup.object().shape({
     .email("Invalid email format")
     .required("Email is required"),
   password: Yup.string()
-    .min(6, "Password must be at least 6 characters")
-    .required("Password is required"),
+    .trim()
+    .required("Password is required")
+    .min(6, "Password must be at least 6 characters"),
 });
 
 export default function ModalLogin({ onClose }: ModalLoginProps) {
@@ -97,7 +98,9 @@ export default function ModalLogin({ onClose }: ModalLoginProps) {
 
         <div className={css.passwordWrapper}>
           <input
-            className={css.inputField}
+            className={`${css.inputField} ${
+              errors.password ? css.errorBorder : ""
+            }`}
             type={showPassword ? "text" : "password"}
             placeholder="Password"
             {...register("password")}
