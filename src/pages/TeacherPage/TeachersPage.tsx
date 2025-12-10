@@ -63,37 +63,50 @@ export default function TeachersPage() {
     setVisibleCount((prev) => prev + 4);
   };
 
-  if (isLoading) {
-    return <LoaderOverlay />;
-  }
-  if (isError) {
-    return (
-      <section className={css.teachersPage}>
-        <Container>
-          <p className={css.error}>
-            {isError && "Failed to load teachers. Please try again later."}
-          </p>
-        </Container>
-      </section>
-    );
-  }
+  // if (isLoading) {
+  //   return <strong>Loading...</strong>;
+  // }
+  // if (isError) {
+  //   return (
+  //     <section className={css.teachersPage}>
+  //       <Container>
+  //         <p className={css.error}>
+  //           {isError && "Failed to load teachers. Please try again later."}
+  //         </p>
+  //       </Container>
+  //     </section>
+  //   );
+  // }
 
   return (
     <section className={css.teachersPage}>
       <Container className={css.filtersContainer}>
-        <SelectorField
-          languageOptions={languageOptions}
-          levelOptions={levelOptions}
-          priceOptions={priceOptions}
-          setSelectedLanguage={setSelectedLanguage}
-          setSelectedLevel={setSelectedLevel}
-          setSelectedPrice={setSelectedPrice}
-        />
-        <TeacherList visibleTeachers={visibleTeachers} isLoading={isLoading} />
-        {visibleCount < filteredTeachers.length && (
-          <button className={css.loadMoreBtn} onClick={handleLoadMore}>
-            Load more
-          </button>
+        {isLoading && <strong>Loading...</strong>}
+        {isError && (
+          <p className={css.error}>
+            {isError && "Failed to load teachers. Please try again later."}
+          </p>
+        )}
+        {!isLoading && !isError && visibleTeachers.length > 0 && (
+          <>
+            <SelectorField
+              languageOptions={languageOptions}
+              levelOptions={levelOptions}
+              priceOptions={priceOptions}
+              setSelectedLanguage={setSelectedLanguage}
+              setSelectedLevel={setSelectedLevel}
+              setSelectedPrice={setSelectedPrice}
+            />
+            <TeacherList
+              visibleTeachers={visibleTeachers}
+              isLoading={isLoading}
+            />
+            {visibleCount < filteredTeachers.length && (
+              <button className={css.loadMoreBtn} onClick={handleLoadMore}>
+                Load more
+              </button>
+            )}
+          </>
         )}
       </Container>
     </section>

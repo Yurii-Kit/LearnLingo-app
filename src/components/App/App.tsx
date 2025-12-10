@@ -23,9 +23,9 @@ function App() {
 
   if (isLoading) {
     return (
-      <div>
+      <>
         <LoaderOverlay />
-      </div>
+      </>
     );
   }
 

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import css from "./FavoritePage.module.css";
 import Container from "../../components/Container/Container";
 import SelectorField from "../../components/SelectorField/SelectorField";
-import LoaderOverlay from "../../components/LoaderOverlay/LoaderOverlay";
+// import LoaderOverlay from "../../components/LoaderOverlay/LoaderOverlay";
 import FavoriteEmptyState from "../../components/FavoriteEmptyState/FavoriteEmptyState";
 import FavoriteList from "../../components/FavoriteList/FavoriteList";
 import { useTeachersData } from "../../lib/hooks/useTeachersData";
@@ -67,43 +67,57 @@ export default function FavoritePage() {
     setVisibleCount((prev) => prev + 4);
   };
 
-  if (isLoading) {
-    return <LoaderOverlay />;
-  }
+  // if (isLoading) {
+  //   return <LoaderOverlay />;
+  // }
 
-  if (isError) {
-    return (
-      <FavoriteEmptyState
-        message="Failed to load favorites. Please try again later."
-        isError
-      />
-    );
-  }
+  // if (isError) {
+  //   return (
+  //     <FavoriteEmptyState
+  //       message="Failed to load favorites. Please try again later."
+  //       isError
+  //     />
+  //   );
+  // }
 
-  if (!favoriteTeachers.length) {
-    return (
-      <FavoriteEmptyState message="You haven't added any teachers to favorites yet." />
-    );
-  }
+  // if (!favoriteTeachers.length) {
+  //   return (
+  //     <FavoriteEmptyState message="You haven't added any teachers to favorites yet." />
+  //   );
+  // }
 
   return (
     <section className={css.favoritePage}>
       <Container className={css.filtersContainer}>
-        <SelectorField
-          languageOptions={languageOptions}
-          levelOptions={levelOptions}
-          priceOptions={priceOptions}
-          setSelectedLanguage={setSelectedLanguage}
-          setSelectedLevel={setSelectedLevel}
-          setSelectedPrice={setSelectedPrice}
-        />
-        <FavoriteList
-          visibleTeachers={visibleTeachers}
-          isLoading={isLoading ?? false}
-          visibleCount={visibleCount}
-          totalCount={filteredTeachers.length}
-          onLoadMore={handleLoadMore}
-        />
+        {isLoading && <strong>Loading...</strong>}
+        {isError && (
+          <p className={css.error}>
+            {isError && "Failed to load favorites. Please try again later."}
+          </p>
+        )}
+        {!isLoading && !isError && !favorites.length && (
+          <FavoriteEmptyState message="You haven't added any teachers to favorites yet." />
+        )}
+
+        {!isLoading && !isError && favoriteTeachers.length > 0 && (
+          <>
+            <SelectorField
+              languageOptions={languageOptions}
+              levelOptions={levelOptions}
+              priceOptions={priceOptions}
+              setSelectedLanguage={setSelectedLanguage}
+              setSelectedLevel={setSelectedLevel}
+              setSelectedPrice={setSelectedPrice}
+            />
+            <FavoriteList
+              visibleTeachers={visibleTeachers}
+              isLoading={isLoading ?? false}
+              visibleCount={visibleCount}
+              totalCount={filteredTeachers.length}
+              onLoadMore={handleLoadMore}
+            />
+          </>
+        )}
       </Container>
     </section>
   );
