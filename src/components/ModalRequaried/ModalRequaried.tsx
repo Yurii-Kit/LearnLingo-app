@@ -4,7 +4,7 @@ import ModalLogin from "../ModalLogin/ModalLogin";
 import ModalRegister from "../ModalRegister/ModalRegister";
 import type { ModalRequariedProps } from "../../types";
 
-import css from "./Modalrequaried.module.css";
+import css from "./ModalRequaried.module.css";
 
 export default function ModalRequaried({ onClose }: ModalRequariedProps) {
   const [modalType, setModalType] = useState<"login" | "register" | null>(null);
