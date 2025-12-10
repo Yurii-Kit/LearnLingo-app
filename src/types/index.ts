@@ -150,6 +150,14 @@ export interface RegisterFormInputs {
   password: string;
 }
 
+export interface BookFormInputs {
+  username: string;
+  email: string;
+  phone: string;
+  reason: string;
+  isSubmitting?: boolean;
+}
+
 // Select Input Types
 export interface OptionType {
   value: string;
