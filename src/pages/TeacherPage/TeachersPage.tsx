@@ -3,7 +3,6 @@ import css from "./TeachersPage.module.css";
 import Container from "../../components/Container/Container";
 import SelectorField from "../../components/SelectorField/SelectorField";
 import TeacherList from "../../components/TeacherList/TeacherList";
-import LoaderOverlay from "../../components/LoaderOverlay/LoaderOverlay";
 import { useTeachersData } from "../../lib/hooks/useTeachersData";
 
 export default function TeachersPage() {
