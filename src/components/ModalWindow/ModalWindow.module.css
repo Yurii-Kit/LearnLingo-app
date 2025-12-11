@@ -42,7 +42,7 @@
     padding: 0;
     border: none;
     background: transparent;
-    stroke: currentColor;
+    stroke: var(--color-text-secondary);
 }
 
 @keyframes fadeIn {

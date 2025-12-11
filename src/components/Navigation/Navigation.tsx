@@ -1,12 +1,15 @@
+
 import clsx from "clsx";
 import { Link, NavLink } from "react-router-dom";
 // import LearnLogo from "../../assets/ukraine.svg";
 import { useAuthStore } from "../../lib/store/authStore";
 import type { ActiveLinkProps } from "../../types";
 import Icon from "../Icon/Icon";
+import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 import css from "./Navigation.module.css";
 
 export default function Navigation() {
+  
   const isLoggedIn = useAuthStore((state) => !!state.user);
   const getActiveLink = ({ isActive }: ActiveLinkProps) => {
     return clsx(css.link, isActive && css.active);
@@ -18,6 +21,7 @@ export default function Navigation() {
         <span className={css.logoText}>LearnLingo</span>
       </Link>
       <div className={css.navLinks}>
+        <ThemeSwitcher />
         <NavLink to="/" className={getActiveLink}>
           Home
         </NavLink>

@@ -1,0 +1,15 @@
+.btnToggle {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    padding: 1px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition-property: scale;
+    transition: 0.3s ease-in;
+}
+
+.btnToggle:hover {
+    scale: 1.1;
+}

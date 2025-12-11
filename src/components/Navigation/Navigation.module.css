@@ -46,6 +46,8 @@
 
     line-height: var(--line-height-snug);
     color: var(--color-text);
+    transition: 0.3s ease;
+    transition-property: opacity;
 }
 
 .link:hover {
