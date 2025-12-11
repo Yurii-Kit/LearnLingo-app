@@ -5,8 +5,19 @@
     flex-direction: row;
     gap: var(--spacing-md);
 
-    width: 255px;
+    width: 310px;
     height: 48px;
+}
+
+.whatsappLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.whatsappLink:hover {
+    opacity: 0.7;
 }
 
 .loginButton {

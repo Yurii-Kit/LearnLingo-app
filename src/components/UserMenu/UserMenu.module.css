@@ -8,6 +8,17 @@
 
 }
 
+.whatsappLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.whatsappLink:hover {
+    opacity: 0.7;
+}
+
 .userName {
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-base);

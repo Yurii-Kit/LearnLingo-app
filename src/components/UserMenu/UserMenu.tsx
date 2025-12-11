@@ -1,6 +1,7 @@
 import { useAuthStore } from "../../lib/store/authStore";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
+import Icon from "../Icon/Icon";
 import css from "./UserMenu.module.css";
 
 export default function UserMenu() {
@@ -18,6 +19,15 @@ export default function UserMenu() {
 
   return (
     <div className={css.wrapper}>
+      <a
+        href="https://wa.me/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={css.whatsappLink}
+        aria-label="Contact us on WhatsApp"
+      >
+        <Icon name="whatsapp" width={28} height={28}></Icon>
+      </a>
       <p className={css.userName}>Welcome, {user?.name}</p>
       <button className={css.logOutBtn} type="button" onClick={handleLogOut}>
         Logout

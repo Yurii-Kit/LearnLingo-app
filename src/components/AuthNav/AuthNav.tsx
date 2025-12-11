@@ -17,6 +17,15 @@ export default function AuthNav() {
 
   return (
     <div className={css.authNav}>
+      <a
+        href="https://wa.me/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={css.whatsappLink}
+        aria-label="Contact us on WhatsApp"
+      >
+        <Icon name="whatsapp" width={28} height={28}></Icon>
+      </a>
       <button
         type="button"
         className={css.loginButton}
