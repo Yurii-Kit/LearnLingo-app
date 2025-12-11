@@ -30,7 +30,7 @@ export default function UserMenu() {
         className={css.whatsappLink}
         aria-label="Contact us on WhatsApp"
       >
-        <Icon name="whatsapp" width={28} height={28}></Icon>
+        <Icon name="whatsapp" width={28} height={28} />
       </a>
       <p className={css.userName}>Welcome, {user?.name}</p>
       <button className={css.logOutBtn} type="button" onClick={handleLogOut}>

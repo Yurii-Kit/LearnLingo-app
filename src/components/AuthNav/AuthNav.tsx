@@ -28,7 +28,7 @@ export default function AuthNav() {
         className={css.whatsappLink}
         aria-label="Contact us on WhatsApp"
       >
-        <Icon name="whatsapp" width={28} height={28}></Icon>
+        <Icon name="whatsapp" width={28} height={28} />
       </a>
       <button
         type="button"
