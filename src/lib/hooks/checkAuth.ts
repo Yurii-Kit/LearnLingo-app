@@ -11,6 +11,7 @@ export const useCheckAuth = () => {
   const fetchFavorites = useAuthStore((state) => state.fetchFavorites);
 
   useEffect(() => {
+    setIsLoading(true);
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         // Користувач залогінений
@@ -35,6 +36,5 @@ export const useCheckAuth = () => {
     });
 
     return () => unsubscribe();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [setUser, setIsLoggedIn, setIsLoading, fetchFavorites]);
 };

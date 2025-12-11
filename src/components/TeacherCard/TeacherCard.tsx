@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { TeacherCardProps } from "../../types";
 import css from "./TeacherCard.module.css";
 import { useAuthStore } from "../../lib/store/authStore";
-import ModalRequaried from "../ModalRequaried/ModalRequaried";
+import ModalRequaried from "../ModalRequired/ModalRequired";
 import ModalBookLesson from "../ModalBookLesson/ModalBookLesson";
 import TeacherAvatar from "../TeacherAvatar/TeacherAvatar";
 import TeacherStats from "../TeacherStats/TeacherStats";

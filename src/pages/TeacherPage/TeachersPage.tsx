@@ -62,21 +62,6 @@ export default function TeachersPage() {
     setVisibleCount((prev) => prev + 4);
   };
 
-  // if (isLoading) {
-  //   return <strong>Loading...</strong>;
-  // }
-  // if (isError) {
-  //   return (
-  //     <section className={css.teachersPage}>
-  //       <Container>
-  //         <p className={css.error}>
-  //           {isError && "Failed to load teachers. Please try again later."}
-  //         </p>
-  //       </Container>
-  //     </section>
-  //   );
-  // }
-
   return (
     <section className={css.teachersPage}>
       <Container className={css.filtersContainer}>

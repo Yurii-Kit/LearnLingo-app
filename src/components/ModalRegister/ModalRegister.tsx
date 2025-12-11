@@ -27,6 +27,7 @@ export default function ModalRegister({ onClose }: ModalRegisterProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const setUser = useAuthStore((state) => state.setUser);
+  const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
 
   const {
     register,
@@ -59,11 +60,11 @@ export default function ModalRegister({ onClose }: ModalRegisterProps) {
         email: user.email,
         name: user.displayName,
       });
-
+      setIsLoggedIn(true);
       reset();
       onClose();
       toast.success("Registration successful");
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error registering user:", error);
       toast.error("Registration failed");
     } finally {
@@ -82,6 +83,9 @@ export default function ModalRegister({ onClose }: ModalRegisterProps) {
       </div>
       <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={css.passwordWrapper}>
+          <label className={css.visuallyHidden} htmlFor="name">
+            Name
+          </label>
           <input
             className={`${css.inputField} ${
               errors.name ? css.errorBorder : ""
@@ -95,6 +99,9 @@ export default function ModalRegister({ onClose }: ModalRegisterProps) {
           )}
         </div>
         <div className={css.passwordWrapper}>
+          <label className={css.visuallyHidden} htmlFor="email">
+            Email
+          </label>
           <input
             className={`${css.inputField} ${
               errors.email ? css.errorBorder : ""
@@ -108,6 +115,9 @@ export default function ModalRegister({ onClose }: ModalRegisterProps) {
           )}
         </div>
         <div className={css.passwordWrapper}>
+          <label className={css.visuallyHidden} htmlFor="password">
+            Password
+          </label>
           <input
             className={`${css.inputField} ${
               errors.password ? css.errorBorder : ""
@@ -121,6 +131,7 @@ export default function ModalRegister({ onClose }: ModalRegisterProps) {
           )}
 
           <button
+            aria-label="show/hide password"
             type="button"
             className={css.eyeBtn}
             onClick={() => setShowPassword((prev) => !prev)}
@@ -128,7 +139,12 @@ export default function ModalRegister({ onClose }: ModalRegisterProps) {
             {showPassword ? <FiEye size={20} /> : <FiEyeOff size={20} />}
           </button>
         </div>
-        <button className={css.formBtn} type="submit" disabled={isLoading}>
+        <button
+          className={css.formBtn}
+          type="submit"
+          aria-label="sign up"
+          disabled={isLoading}
+        >
           {isLoading ? "Signing Up..." : "Sign Up"}
         </button>
       </form>

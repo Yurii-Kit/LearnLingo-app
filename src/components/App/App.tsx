@@ -11,15 +11,17 @@ import { useAuthStore } from "../../lib/store/authStore";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const TeachersPage = lazy(() => import("../../pages/TeacherPage/TeachersPage"));
-const Favorites = lazy(() => import("../../pages/FavoritePage/FavoritePage"));
+const FavoritePage = lazy(
+  () => import("../../pages/FavoritePage/FavoritePage")
+);
 const NotFoundPage = lazy(
   () => import("../../pages/NotFoundPage/NotFoundPage")
 );
 
 function App() {
-  useCheckAuth();
-
   const isLoading = useAuthStore((state) => state.isLoading);
+
+  useCheckAuth();
 
   if (isLoading) {
     return (
@@ -40,7 +42,7 @@ function App() {
             <Route path="/teachers" element={<TeachersPage />} />
             <Route
               path="/favorites"
-              element={<PrivateRoute component={<Favorites />} />}
+              element={<PrivateRoute component={<FavoritePage />} />}
             />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

@@ -67,25 +67,6 @@ export default function FavoritePage() {
     setVisibleCount((prev) => prev + 4);
   };
 
-  // if (isLoading) {
-  //   return <LoaderOverlay />;
-  // }
-
-  // if (isError) {
-  //   return (
-  //     <FavoriteEmptyState
-  //       message="Failed to load favorites. Please try again later."
-  //       isError
-  //     />
-  //   );
-  // }
-
-  // if (!favoriteTeachers.length) {
-  //   return (
-  //     <FavoriteEmptyState message="You haven't added any teachers to favorites yet." />
-  //   );
-  // }
-
   return (
     <section className={css.favoritePage}>
       <Container className={css.filtersContainer}>

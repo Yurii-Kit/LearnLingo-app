@@ -129,7 +129,7 @@ export interface ModalRegisterProps {
   onClose: () => void;
 }
 
-export interface ModalRequariedProps {
+export interface ModalRequiredProps {
   onClose: () => void;
 }
 

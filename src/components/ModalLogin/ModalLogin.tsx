@@ -60,7 +60,7 @@ export default function ModalLogin({ onClose }: ModalLoginProps) {
       reset(); // Очищення форми
       onClose();
       toast.success("Login successful");
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error logging in user:", error);
       toast.error("Login failed");
     } finally {
@@ -81,6 +81,9 @@ export default function ModalLogin({ onClose }: ModalLoginProps) {
       {/* 5. handleSubmit обгортає функцію */}
       <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={css.passwordWrapper}>
+          <label className={css.visuallyHidden} htmlFor="email">
+            Email
+          </label>
           <input
             className={`${css.inputField} ${
               errors.email ? css.errorBorder : ""
@@ -97,6 +100,7 @@ export default function ModalLogin({ onClose }: ModalLoginProps) {
         </div>
 
         <div className={css.passwordWrapper}>
+          <label className={css.visuallyHidden} htmlFor="password">Password</label>
           <input
             className={`${css.inputField} ${
               errors.password ? css.errorBorder : ""
@@ -110,6 +114,7 @@ export default function ModalLogin({ onClose }: ModalLoginProps) {
           )}
 
           <button
+            aria-label="show/hide password"
             type="button"
             className={css.eyeBtn}
             onClick={() => setShowPassword((prev) => !prev)}
@@ -118,7 +123,12 @@ export default function ModalLogin({ onClose }: ModalLoginProps) {
           </button>
         </div>
 
-        <button className={css.formBtn} type="submit">
+        <button
+          className={css.formBtn}
+          type="submit"
+          aria-label="log in"
+          disabled={isLoading}
+        >
           {isLoading ? "Logging In..." : "Log In"}
         </button>
       </form>

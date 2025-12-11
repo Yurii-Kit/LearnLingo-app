@@ -76,7 +76,7 @@ export default function ModalBookLesson({
 
       <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={css.optionsGroup}>
-          <label className={css.option}>
+          <label aria-label="Career and business" className={css.option}>
             <input
               type="radio"
               {...register("reason")}
@@ -85,7 +85,7 @@ export default function ModalBookLesson({
             Career and business
           </label>
 
-          <label className={css.option}>
+          <label aria-label="Lesson for kids" className={css.option}>
             <input
               type="radio"
               {...register("reason")}
@@ -94,12 +94,12 @@ export default function ModalBookLesson({
             Lesson for kids
           </label>
 
-          <label className={css.option}>
+          <label aria-label="Living abroad" className={css.option}>
             <input type="radio" {...register("reason")} value="Living abroad" />
             Living abroad
           </label>
 
-          <label className={css.option}>
+          <label aria-label="Exams and coursework" className={css.option}>
             <input
               type="radio"
               {...register("reason")}
@@ -108,10 +108,10 @@ export default function ModalBookLesson({
             Exams and coursework
           </label>
 
-          <label className={css.option}>
+          <label aria-label="Culture, travel or hobby" className={css.option}>
             <input
               type="radio"
-              name="reason"
+              {...register("reason")}
               value="Culture, travel or hobby"
             />
             Culture, travel or hobby
@@ -120,6 +120,9 @@ export default function ModalBookLesson({
 
         <div className={css.inputs}>
           <div className={css.inputWrapper}>
+            <label htmlFor="username" className={css.visuallyHidden}>
+              Full Name
+            </label>
             <input
               type="text"
               {...register("username")}
@@ -133,6 +136,9 @@ export default function ModalBookLesson({
             )}
           </div>
           <div className={css.inputWrapper}>
+            <label htmlFor="email" className={css.visuallyHidden}>
+              Email
+            </label>
             <input
               type="email"
               {...register("email")}
@@ -144,6 +150,9 @@ export default function ModalBookLesson({
             )}
           </div>
           <div className={css.inputWrapper}>
+            <label htmlFor="phone" className={css.visuallyHidden}>
+              Phone number
+            </label>
             <input
               type="tel"
               {...register("phone")}
@@ -156,7 +165,12 @@ export default function ModalBookLesson({
           </div>
         </div>
 
-        <button type="submit" className={css.submitBtn} disabled={isSubmitting}>
+        <button
+          type="submit"
+          className={css.submitBtn}
+          disabled={isSubmitting}
+          aria-label="book trial lesson"
+        >
           Book
         </button>
       </form>
