@@ -6,6 +6,10 @@ import Icon from "../Icon/Icon";
 
 export default function AuthNav() {
   const [modalType, setModalType] = useState<"login" | "register" | null>(null);
+  const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "";
+  const whatsappUrl = whatsappNumber 
+    ? `https://wa.me/${whatsappNumber}` 
+    : "https://wa.me/";
 
   const openModal = (type: "login" | "register") => {
     setModalType(type);
@@ -18,7 +22,7 @@ export default function AuthNav() {
   return (
     <div className={css.authNav}>
       <a
-        href="https://wa.me/"
+        href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         className={css.whatsappLink}

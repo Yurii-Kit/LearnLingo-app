@@ -75,7 +75,10 @@ VITE_FIREBASE_PROJECT_ID=your_project_id
 VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
 VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
 VITE_FIREBASE_APP_ID=your_app_id
+VITE_WHATSAPP_NUMBER=your_whatsapp_number_with_country_code
 ```
+
+Note: For the WhatsApp number, use the format without '+' or spaces (e.g., `1234567890` for +1 234-567-890).
 
 4. Start the development server:
 

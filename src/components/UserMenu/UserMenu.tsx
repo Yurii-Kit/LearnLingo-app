@@ -7,6 +7,10 @@ import css from "./UserMenu.module.css";
 export default function UserMenu() {
   const user = useAuthStore((state) => state.user);
   const clearUser = useAuthStore((state) => state.clearUser);
+  const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "";
+  const whatsappUrl = whatsappNumber 
+    ? `https://wa.me/${whatsappNumber}` 
+    : "https://wa.me/";
 
   const handleLogOut = async () => {
     try {
@@ -20,7 +24,7 @@ export default function UserMenu() {
   return (
     <div className={css.wrapper}>
       <a
-        href="https://wa.me/"
+        href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         className={css.whatsappLink}
