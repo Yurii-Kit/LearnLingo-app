@@ -17,6 +17,13 @@
     /* Chrome, Safari, Opera */
 }
 
+@media (min-height: 900px) {
+    .modalBook {
+        max-height: 100vh;
+
+    }
+}
+
 
 .titleContainer {
     display: flex;
