@@ -4,9 +4,18 @@
     max-width: 600px;
     max-height: 90vh;
     overflow-y: auto;
+
+    /* Приховати scrollbar */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
 }
 
-
+.modalBook::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
 
 
 .titleContainer {
@@ -86,7 +95,6 @@
     margin-bottom: var(--spacing-lg);
 }
 
-.form {}
 
 .optionsGroup {
     display: flex;
